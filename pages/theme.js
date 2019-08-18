@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import Page from "../components/page";
+import Page from "../components/Page";
 import theme from "../config/theme";
 
 const Theme = () => {

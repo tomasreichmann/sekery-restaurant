@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import Link from "next/link";
-import Page from "../components/page";
+import Page from "../components/Page";
 import DailyMenu from "../components/sections/DailyMenu";
 import MenuFeatures from "../components/sections/MenuFeatures";
 import MealMenu from "../components/sections/MealMenu";
