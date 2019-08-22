@@ -6,7 +6,7 @@ import A from "./A";
 
 const linkProps = {
   color: "inherit",
-  hoverColor: theme.color.textMuted,
+  hoverColor: theme.color.primaryLighter,
   textDecoration: "none"
 };
 
@@ -25,13 +25,13 @@ const Header = ({ ...restProps }) => {
         // background: `linear-gradient(to bottom, rgba(189,171,158,0.75) 0%,rgba(189,171,158,0.75) 50%,rgba(189,171,158,0.25) 100%)`,
         padding: theme.spacing,
         display: "grid",
-        gridTemplateColumns: "1fr 200px 1fr",
+        gridTemplateColumns: "1fr 300px 1fr",
         gridTemplateRows: "auto 1fr",
         gridGap: theme.spacing,
         alignItems: "center",
-        height: 140,
+        minHeight: 200,
         fontFamily: theme.fontFamily.headline,
-        color: theme.color.text
+        color: theme.color.primary
       }}
     >
       <div>
@@ -85,7 +85,7 @@ const Header = ({ ...restProps }) => {
           />
         </A>
       </div>
-      <div css={{ textAlign: "right", ...navStyles }}>
+      {/* <div css={{ textAlign: "right", ...navStyles }}>
         <A {...linkProps} href="#denni-menu">
           Denní menu
         </A>
@@ -97,8 +97,50 @@ const Header = ({ ...restProps }) => {
         <A {...linkProps} href="#napojovy-listek">
           Nápoje
         </A>
-      </div>
-      <div css={navStyles}>
+        &emsp;
+        <A {...linkProps} href="#tematicke-vecery">
+          Tematické večery
+        </A>
+      </div> */}
+      {/* <div css={navStyles}>
+        <A {...linkProps} href="#o-nas">
+          O nás
+        </A>
+        &emsp;
+        <A {...linkProps} href="#galerie">
+          Galerie
+        </A>
+        &emsp;
+        <A {...linkProps} href="#kontakt">
+          Kontakt
+        </A>
+        &emsp;
+        <A {...linkProps} href="#pracovni-prilezitosti">
+          Práce
+        </A>
+      </div> */}
+      <div css={{
+        gridColumn: "1 / 4",
+        textAlign: "center",
+        textTransform: "uppercase",
+        fontSize: theme.fontSize.h4,
+      }}>
+        <A {...linkProps} href="#denni-menu">
+          Denní menu
+        </A>
+        &emsp;
+        <A {...linkProps} href="#jidelni-listek">
+          Jídelní lístek
+        </A>
+        &emsp;
+        <A {...linkProps} href="#napojovy-listek">
+          Nápoje
+        </A>
+        &emsp;
+        <A {...linkProps} href="#tematicke-vecery">
+          Tematické večery
+        </A>
+        &emsp;
         <A {...linkProps} href="#o-nas">
           O nás
         </A>

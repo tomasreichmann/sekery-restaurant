@@ -33,37 +33,52 @@ const thisWeek = [
 ];
 
 const dayOfWeekNames = [
-  "Pondělí",
-  "Úterý",
-  "Středa",
-  "Čtvrtek",
-  "Pátek",
-  "Sobota",
-  "Neděle"
+  "Po",
+  "Út",
+  "St",
+  "Čt",
+  "Pá",
+  "So",
+  "Ne",
+  // "Pondělí",
+  // "Úterý",
+  // "Středa",
+  // "Čtvrtek",
+  // "Pátek",
+  // "Sobota",
+  // "Neděle",
 ];
 
-const DayButton = ({ date = new Date() }) => {
+const DayButton = ({ date = new Date(), isActive = false }) => {
   const dayOfWeek = getDayOfWeekWithOffset(date);
   const dayName = dayOfWeekNames[dayOfWeek];
   return (
     <button
       css={{
-        background: `${theme.color.primaryLighter}  ${dayOfWeek *
-          100}% -10px url(/static/woodLighter.jpg)`,
         padding: theme.spacing / 2,
-        textAlign: "center",
         ...theme.typography.h4,
         margin: 0,
         color: theme.color.textMuted,
         textTransform: "uppercase",
-        border: `1px solid ${theme.color.primaryLighter}`,
-        borderBottom: `2px solid ${theme.color.primary}`,
+        // border: `1px solid ${theme.color.primaryLighter}`,
         boxShadow: theme.shadow.low,
-        cursor: "pointer"
+        cursor: "pointer",
+        backgroundColor: isActive ? theme.color.white : theme.color.primaryLightest,
+        width: "3em",
+        height: "3em",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        borderRadius: "50%",
+        ":hover": {
+          backgroundColor: theme.color.primaryLighter,
+          color: theme.color.white,
+        }
       }}
     >
-      {dayName}&emsp;
-      {date.getDate()}. {date.getMonth() + 1}.
+      <span>{dayName}</span>
     </button>
   );
 };
@@ -203,20 +218,26 @@ const DailyMenu = () => {
   ];
   return (
     <section css={{ marginBottom: theme.spacing * 2 }}>
-      <SectionHeader>Denní menu</SectionHeader>
-      <div
-        css={{
-          padding: theme.spacing,
-          display: "grid",
-          gridTemplateColumns: `repeat(5, 1fr)`,
-          gridGap: theme.spacing
-        }}
-      >
-        {thisWeek.map((date, dayIndex) => (
-          <DayButton key={dayIndex} date={date} />
-        ))}
-      </div>
-      <Menu items={items} />
+      <SectionHeader background="url(https://www.seriouseats.com/recipes/images/2014/12/20150110-beef-stroganoff-food-lab-28.jpg) center center / cover">Denní menu</SectionHeader>
+
+      <Menu items={items} >
+        <div
+          css={{
+            // padding: theme.spacing,
+            display: "grid",
+            gridTemplateColumns: `repeat(5, 1fr)`,
+            gridGap: theme.spacing
+          }}
+        >
+          {thisWeek.map((date, dayIndex) => (
+            <DayButton key={dayIndex} date={date} isActive={dayIndex === 0}/>
+          ))}
+        </div>
+        <div css={{
+          textAlign: "center",
+          ...theme.typography.h2,
+        }} >22. 8. 2019</div>
+      </Menu>
     </section>
   );
 };

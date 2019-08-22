@@ -12,8 +12,8 @@ const AboutUs = () => {
       <div
         css={{
           padding: theme.spacing,
-          columns: 3,
-          columnGap: theme.spacing
+          // columns: 3,
+          // columnGap: theme.spacing
         }}
       >
         Lorem Ipsum je demonstrativní výplňový text používaný v tiskařském a

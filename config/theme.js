@@ -1,11 +1,13 @@
 const color = {
-  primary: "#7B6656",
+  primary: "#44523E",
+  primaryLighter: "#546E49",
+  primaryLightest: "#9FB695",
+
   primaryDarker: "#39261D",
-  primaryLighter: "#BDA592",
   accent: "#1B4117",
   accentLighter: "#496546",
   accentMuted: "#3C4C3B",
-  paperLighter: "#E7DFD8",
+  paperLighter: "#ffffff",
   paper: "#BDAB9E",
   paperInverse: "#5C5047",
   text: "#2C2E31",

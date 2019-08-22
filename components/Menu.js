@@ -56,16 +56,19 @@ const MenuList = ({ items }) => {
   );
 };
 
-const Menu = ({ items = [], ...restProps }) => {
+const Menu = ({ items = [], children, ...restProps }) => {
   return (
     <div
         css={{
           padding: theme.spacing,
-          columnCount: 3,
-          columnGap: theme.spacing
+          columnCount: 2,
+          columnGap: theme.spacing * 2,
+          maxWidth: 900,
+          margin: `0 auto`,
         }}
         {...restProps}
       >
+        {children}
         <MenuList items={items} />
       </div>
   );

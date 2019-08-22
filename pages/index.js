@@ -8,17 +8,22 @@ import ThemedEvenings from "../components/sections/ThemedEvenings";
 import AboutUs from "../components/sections/AboutUs";
 import Gallery from "../components/sections/Gallery";
 import ContactUs from "../components/sections/ContactUs";
+import RestaurantFeatures from "../components/sections/RestaurantFeatures";
+import Career from "../components/sections/Career";
+import Footer from "../components/sections/Footer";
 
 const Home = () => (
   <Page>
     <DailyMenu />
-    <MenuFeatures />
     <MealMenu />
     <MenuFeatures />
     <ThemedEvenings />
     <AboutUs />
     <Gallery />
     <ContactUs />
+    <RestaurantFeatures />
+    <Career />
+    <Footer />
   </Page>
 );
 
