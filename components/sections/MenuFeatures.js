@@ -18,7 +18,7 @@ const MenuFeature = ({ children, iconUri = null }) => {
 }
 const MenuFeatures = () => {
   return (
-    <section css={{ marginTop: -theme.spacing * 2, marginBottom: theme.spacing * 2 }}>
+    <section css={{ marginTop: -theme.spacing * 2, marginBottom: theme.spacing * 2 }} >
       <div
         css={{
           padding: theme.spacing,

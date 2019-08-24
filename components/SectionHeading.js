@@ -4,9 +4,7 @@ import theme from "../config/theme";
 
 const SectionHeader = ({
   children,
-  background = `${
-    theme.color.primaryLighter
-  } center center / 50% url(/static/wood.jpg)`,
+  backgroundUrl = "/static/wood.jpg",
   ...restProps
 }) => {
   return (
@@ -17,7 +15,7 @@ const SectionHeader = ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        background: background ? background : "transparent none",
+        backgroundImage: `url(${backgroundUrl})` || "none",
         backgroundAttachment: "fixed",
         backgroundPosition: "center",
         backgroundSize: "cover",

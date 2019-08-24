@@ -3,17 +3,14 @@ import { jsx } from "@emotion/core";
 
 import theme from "../config/theme";
 import A from "./A";
+import IconFacebook from "./icons/IconFacebook";
+import IconInstagram from "./icons/IconInstagram";
+import IconTripadvisor from "./icons/iconTripadvisor";
 
 const linkProps = {
   color: "inherit",
   hoverColor: theme.color.primaryLighter,
   textDecoration: "none"
-};
-
-const navStyles = {
-  fontSize: theme.fontSize.h3,
-  lineHeight: theme.lineHeight.h3,
-  textTransform: "uppercase"
 };
 
 const Header = ({ ...restProps }) => {
@@ -36,11 +33,11 @@ const Header = ({ ...restProps }) => {
     >
       <div>
         <A {...linkProps} href="/">
-          [CZ]
+          <img src="/static/cz.svg" css={{ height: "1em", border: `1px solid ${theme.color.border}` }} />
         </A>
         &emsp;
         <A {...linkProps} href="/en">
-          [EN]
+          <img src="/static/en.svg" css={{ height: "1em", border: `1px solid ${theme.color.border}` }} />
         </A>
       </div>
       <A
@@ -49,8 +46,7 @@ const Header = ({ ...restProps }) => {
         css={{
           gridRow: "1/3",
           gridColumn: 2,
-          background: `url("/static/logo.svg") center center no-repeat`,
-          backgroundSize: "110%",
+          background: `url("/static/logo.svg") center center / auto 150% no-repeat`,
           alignSelf: "stretch",
           color: "transparent",
         }}
@@ -62,63 +58,17 @@ const Header = ({ ...restProps }) => {
           {...linkProps}
           href="https://www.facebook.com/Sekery-Restaurant-103322994343167"
         >
-          <img
-            src="/static/facebook.svg"
-            alt="Facebook"
-            css={{ height: "2em" }}
-          />
+          <IconFacebook css={{ height: "2em" }} />
         </A>
         &emsp;
         <A {...linkProps} href="https://www.instagram.com/sekery_restaurant/">
-          <img
-            src="/static/instagram.svg"
-            alt="Instagram"
-            css={{ height: "2em" }}
-          />
+          <IconInstagram css={{ height: "2em" }} />
         </A>
         &emsp;
         <A {...linkProps} href="https://www.tripadvisor.cz/">
-          <img
-            src="/static/tripadvisor.svg"
-            alt="Trip Advisor"
-            css={{ height: "2em" }}
-          />
+          <IconTripadvisor css={{ height: "2em" }} />
         </A>
       </div>
-      {/* <div css={{ textAlign: "right", ...navStyles }}>
-        <A {...linkProps} href="#denni-menu">
-          Denní menu
-        </A>
-        &emsp;
-        <A {...linkProps} href="#jidelni-listek">
-          Jídelní lístek
-        </A>
-        &emsp;
-        <A {...linkProps} href="#napojovy-listek">
-          Nápoje
-        </A>
-        &emsp;
-        <A {...linkProps} href="#tematicke-vecery">
-          Tematické večery
-        </A>
-      </div> */}
-      {/* <div css={navStyles}>
-        <A {...linkProps} href="#o-nas">
-          O nás
-        </A>
-        &emsp;
-        <A {...linkProps} href="#galerie">
-          Galerie
-        </A>
-        &emsp;
-        <A {...linkProps} href="#kontakt">
-          Kontakt
-        </A>
-        &emsp;
-        <A {...linkProps} href="#pracovni-prilezitosti">
-          Práce
-        </A>
-      </div> */}
       <div css={{
         gridColumn: "1 / 4",
         textAlign: "center",

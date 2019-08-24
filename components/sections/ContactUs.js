@@ -9,14 +9,20 @@ import P from "../P";
 const ContactUs = () => {
   return (
     <section
+      id="kontakt"
       css={{
         marginBottom: theme.spacing * 2
       }}
     >
-      <SectionHeader>Kontakt</SectionHeader>
+      <SectionHeader
+        backgroundUrl="/static/smichovske-uzeniny-street.png"
+      >
+        Kontakt
+      </SectionHeader>
       <div
         css={{
           padding: theme.spacing,
+          paddingTop: theme.spacing * 2,
           alignItems: "stretch",
           justifyItems: "stretch",
           display: "grid",

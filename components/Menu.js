@@ -12,7 +12,7 @@ const MenuItem = ({ name, amount = null, price }) => {
         gridTemplateColumns: "50px auto 50px",
         gridGap: theme.spacing / 2,
         paddingBottom: theme.spacing / 2,
-        borderBottom: `1px solid ${theme.color.border}`,
+        borderBottom: `2px solid ${theme.color.primaryLightest}`,
         marginBottom: theme.spacing / 2,
         breakInside: "avoid"
       }}
@@ -24,7 +24,7 @@ const MenuItem = ({ name, amount = null, price }) => {
   );
 };
 
-const MenuGroup = ({ items, groupName }) => {
+const MenuGroup = ({ items, groupName, id }) => {
   return (
     <>
       <Headline
@@ -32,6 +32,7 @@ const MenuGroup = ({ items, groupName }) => {
         css={{
           marginTop: theme.spacing
         }}
+        id={id}
       >
         {groupName}
       </Headline>
@@ -43,12 +44,12 @@ const MenuGroup = ({ items, groupName }) => {
 const MenuList = ({ items }) => {
   return (
     <>
-      {items.map(item => {
+      {items.map((item, itemIndex) => {
         if (item.items && item.items.length > 0) {
-          return <MenuGroup key={item.groupName} {...item} />;
+          return <MenuGroup key={`${itemIndex}-${item.groupName}`} {...item} />;
         }
         if (item.name) {
-          return <MenuItem key={item.name} {...item} />;
+          return <MenuItem key={`${itemIndex}-${item.name}`} {...item} />;
         }
         return item.content;
       })}
@@ -56,7 +57,7 @@ const MenuList = ({ items }) => {
   );
 };
 
-const Menu = ({ items = [], children, ...restProps }) => {
+const Menu = ({ items = [], children = null, ...restProps }) => {
   return (
     <div
         css={{

@@ -135,11 +135,29 @@ const MealMenu = () => {
           price: "140 Kč"
         }
       ]
-    }
+    },
+    {
+      groupName: "Nápojový lístek",
+      id: "napojovy-listek",
+      items: [
+        {
+          name: "Kozel 10°",
+          amount: "500ml",
+          price: "35 Kč"
+        },
+        {
+          name: "Matonni voda sycená",
+          amount: "250ml",
+          price: "20 Kč"
+        }
+      ]
+    },
   ];
   return (
-    <section css={{ marginBottom: theme.spacing * 2 }}>
-      <SectionHeader>Jídelní lístek</SectionHeader>
+    <section css={{ marginBottom: theme.spacing * 2 }} id="jidelni-listek">
+      <SectionHeader backgroundUrl="https://cdn.pixabay.com/photo/2018/11/02/15/25/roast-goose-3790417_1280.jpg">
+        Jídelní lístek
+      </SectionHeader>
       <Menu items={items} />
     </section>
   );

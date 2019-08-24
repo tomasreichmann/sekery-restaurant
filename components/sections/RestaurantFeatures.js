@@ -6,12 +6,13 @@ const RestaurantFeature = ({ children, iconUri = null }) => {
   return <div css={{
     display: "flex",
     flex: "1 1 auto",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
+    textAlign: "center",
   }}>
     {iconUri && <img src={iconUri} alt="" css={{
-      width: theme.spacing * 3,
-      marginRight: theme.spacing,
+      height: theme.spacing * 3,
+      marginBottom: theme.spacing,
     }}/>}
     {children}
   </div>
@@ -28,16 +29,16 @@ const RestaurantFeatures = () => {
           gridGap: theme.spacing
         }}
       >
-        <RestaurantFeature iconUri="/static/fresh-meal.svg" >
+        <RestaurantFeature iconUri="/static/stravenky.png" >
         Přijímáme stravenky
         </RestaurantFeature>
-        <RestaurantFeature iconUri="/static/takeout.svg" >
+        <RestaurantFeature iconUri="/static/cards.jpg" >
         Přijímáme platební karty
         </RestaurantFeature>
-        <RestaurantFeature iconUri="/static/allergens.svg" >
+        <RestaurantFeature iconUri="/static/ac.svg" >
         Klimatizováno
         </RestaurantFeature>
-        <RestaurantFeature iconUri="/static/allergens.svg" >
+        <RestaurantFeature iconUri="/static/wifi.svg" >
         Free WiFi
         </RestaurantFeature>
       </div>
