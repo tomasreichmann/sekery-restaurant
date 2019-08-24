@@ -5,7 +5,7 @@ import theme from "../config/theme";
 import A from "./A";
 import IconFacebook from "./icons/IconFacebook";
 import IconInstagram from "./icons/IconInstagram";
-import IconTripadvisor from "./icons/iconTripadvisor";
+import IconTripadvisor from "./icons/IconTripadvisor";
 
 const linkProps = {
   color: "inherit",
