@@ -27,7 +27,9 @@ const Career = () => {
       >
         <p>
           Hledáme kuchaře a číšníky! Pokud máte zájem, zašlete nám prosím Váš
-          životopis na email. <br />
+          životopis na email.
+        </p>
+        <p>
           Děkujeme
         </p>
 

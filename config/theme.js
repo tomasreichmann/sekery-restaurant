@@ -14,6 +14,7 @@ const color = {
   textMuted: "#31353D",
   border: "#b1a49a",
   white: "#fff",
+  black: "#000",
 };
 
 const spacing = 20;
@@ -61,6 +62,7 @@ const typography = {
     lineHeight: lineHeight.h1,
     marginTop: spacing,
     marginBottom: spacing / 4,
+    color: color.primary,
   },
   h2: {
     fontFamily: headlineFont,
@@ -68,6 +70,7 @@ const typography = {
     lineHeight: lineHeight.h2,
     marginTop: spacing,
     marginBottom: spacing / 4,
+    color: color.primary,
   },
   h3: {
     fontFamily: headlineFont,
@@ -75,6 +78,7 @@ const typography = {
     lineHeight: lineHeight.h3,
     marginTop: spacing,
     marginBottom: spacing / 4,
+    color: color.primary,
   },
   h4: {
     fontFamily: headlineFont,
@@ -82,6 +86,7 @@ const typography = {
     lineHeight: lineHeight.h4,
     marginTop: spacing,
     marginBottom: spacing / 4,
+    color: color.primary,
   }
 };
 

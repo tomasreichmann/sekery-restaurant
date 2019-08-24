@@ -6,13 +6,14 @@ import Headline from "../Headline";
 import A from "../A";
 import P from "../P";
 
-const ContactUs = () => {
+const ContactUs = ({...restProps}) => {
   return (
     <section
       id="kontakt"
       css={{
         marginBottom: theme.spacing * 2
       }}
+      {...restProps}
     >
       <SectionHeader
         backgroundUrl="/static/smichovske-uzeniny-street.png"

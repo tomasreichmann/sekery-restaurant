@@ -69,7 +69,7 @@ const Gallery = () => {
             </Thumbnail>
           </A>
         </Link>
-        <Link href="/galerie/ostatní">
+        <Link href="/galerie/udalosti">
         <A color="inherit" hoverColor="inherit" textDecoration="none" >
             <Thumbnail uri="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPJYFZnUYPLRq7tynkG2Np-UlCBG5ItWcs_DMfA-T5LeQfxuPM8g">
               <Headline level={1} css={{ color: "inherit"}}>Události</Headline>

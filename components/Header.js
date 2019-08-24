@@ -75,35 +75,35 @@ const Header = ({ ...restProps }) => {
         textTransform: "uppercase",
         fontSize: theme.fontSize.h4,
       }}>
-        <A {...linkProps} href="#denni-menu">
+        <A {...linkProps} href="/#denni-menu">
           Denní menu
         </A>
         &emsp;
-        <A {...linkProps} href="#jidelni-listek">
+        <A {...linkProps} href="/#jidelni-listek">
           Jídelní lístek
         </A>
         &emsp;
-        <A {...linkProps} href="#napojovy-listek">
+        <A {...linkProps} href="/#napojovy-listek">
           Nápoje
         </A>
         &emsp;
-        <A {...linkProps} href="#tematicke-vecery">
+        <A {...linkProps} href="/#tematicke-vecery">
           Tematické večery
         </A>
         &emsp;
-        <A {...linkProps} href="#o-nas">
+        <A {...linkProps} href="/#o-nas">
           O nás
         </A>
         &emsp;
-        <A {...linkProps} href="#galerie">
+        <A {...linkProps} href="/#galerie">
           Galerie
         </A>
         &emsp;
-        <A {...linkProps} href="#kontakt">
+        <A {...linkProps} href="/#kontakt">
           Kontakt
         </A>
         &emsp;
-        <A {...linkProps} href="#pracovni-prilezitosti">
+        <A {...linkProps} href="/#pracovni-prilezitosti">
           Práce
         </A>
       </div>
