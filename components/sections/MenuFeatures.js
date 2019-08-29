@@ -22,10 +22,12 @@ const MenuFeatures = () => {
       <div
         css={{
           padding: theme.spacing,
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
-          alignItems: "flex-start",
-          gridGap: theme.spacing
+          [`@media (min-width: ${theme.breakpoint.large}px)`]: {
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            alignItems: "flex-start",
+            gridGap: theme.spacing,
+          },
         }}
       >
         <MenuFeature iconUri="/static/fresh-meal.svg" >

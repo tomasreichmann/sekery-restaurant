@@ -34,9 +34,11 @@ const Photos = ({ items, heading = null, ...restProps }) => {
         {...restProps}
         css={{
           gridColumn: "1 / -1",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
-          gridAutoFlow: "dense",
+          [`@media (min-width: ${theme.breakpoint.small}px)`]: {
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gridAutoFlow: "dense",
+          },
           backgroundColor: theme.color.black,
         }}
       >

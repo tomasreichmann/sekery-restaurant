@@ -24,16 +24,18 @@ const ContactUs = ({...restProps}) => {
         css={{
           padding: theme.spacing,
           paddingTop: theme.spacing * 2,
-          alignItems: "stretch",
-          justifyItems: "stretch",
-          display: "grid",
-          gridGap: theme.spacing,
-          gridTemplateColumns: "1fr 1fr 1fr"
+          [`@media (min-width: ${theme.breakpoint.large}px)`]: {
+            display: "grid",
+            alignItems: "stretch",
+            justifyItems: "stretch",
+            gridGap: theme.spacing,
+            gridTemplateColumns: "1fr 1fr 1fr"
+          }
         }}
       >
         <iframe
           src="https://api.mapy.cz/frame?params=%7B%22x%22%3A14.405437469482422%2C%22y%22%3A50.070068359375%2C%22base%22%3A%221%22%2C%22layers%22%3A%5B%5D%2C%22zoom%22%3A17%2C%22url%22%3A%22https%3A%2F%2Fmapy.cz%2Fs%2F3y5jp%22%2C%22mark%22%3A%7B%22x%22%3A%2214.405437469482422%22%2C%22y%22%3A%2250.070068359375%22%2C%22title%22%3A%22Michal%20Kratochv%C3%ADl%22%7D%2C%22overview%22%3Atrue%7D&amp;width=500&amp;height=333&amp;lang=cs"
-          style={{ border: "none" }}
+          css={{ border: "none", width: "100%", height: 300 }}
           frameBorder="0"
         />
         <div>

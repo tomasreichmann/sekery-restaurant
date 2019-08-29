@@ -19,6 +19,10 @@ const color = {
 
 const spacing = 20;
 
+const breakpoint = {
+  small: 600,
+  large: 950
+};
 
 const fontSize = {
   body: "100%", // 16px
@@ -132,5 +136,6 @@ export default {
   typography,
   spacing,
   global,
-  shadow
+  shadow,
+  breakpoint,
 };

@@ -36,17 +36,12 @@ const Thumbnail = ({ uri, children = null, ...restProps }) => {
 const Gallery = () => {
   return (
     <section css={{ marginBottom: theme.spacing * 2 }} id="galerie">
-      {/* <HR /> */}
-      {/* <Headline level={1} css={{
-        textAlign: "center",
-        padding: `${theme.spacing}px 0 ${theme.spacing}px`,
-        margin: 0,
-        textTransform: "uppercase",
-      }} >Galerie</Headline> */}
       <div
         css={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
+          [`@media (min-width: ${theme.breakpoint.small}px)`]: {
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+          },
           color: theme.color.white,
           textTransform: "uppercase",
           textShadow: `rgba(0, 0, 0, 1) 0 0 16px`,

@@ -5,7 +5,9 @@ import Headline from "../Headline";
 
 const ThemedItem = ({ children, imageUri = null }) => {
   return <div css={{
-    width: "33%",
+    [`@media (min-width: ${theme.breakpoint.large}px)`]: {
+      width: "33%",
+    },
     padding: theme.spacing / 2,
     boxSizing: "border-box",
   }}>
@@ -21,10 +23,12 @@ const ThemedEvenings = () => {
       <div
         css={{
           padding: `${theme.spacing /2}px ${theme.spacing / 2}px`,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          flexWrap: "wrap",
+          [`@media (min-width: ${theme.breakpoint.large}px)`]: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            flexWrap: "wrap",
+          }
         }}
       >
         <ThemedItem imageUri="https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/53/2019/02/Slimming-Worlds-roast-dinner-1220x803.jpg" >

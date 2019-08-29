@@ -62,10 +62,12 @@ const Menu = ({ items = [], children = null, ...restProps }) => {
     <div
         css={{
           padding: theme.spacing,
-          columnCount: 2,
-          columnGap: theme.spacing * 2,
-          maxWidth: 900,
-          margin: `0 auto`,
+          [`@media (min-width: ${theme.breakpoint.large}px)`]: {
+            columnCount: 2,
+            columnGap: theme.spacing * 2,
+            maxWidth: 900,
+            margin: `0 auto`,
+          }
         }}
         {...restProps}
       >

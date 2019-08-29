@@ -14,9 +14,11 @@ const AboutUs = () => {
       <div
         css={{
           padding: theme.spacing,
-          display: "grid",
-          gridTemplateColumns: "1fr 2fr",
-          gridGap: theme.spacing,
+          [`@media (min-width: ${theme.breakpoint.large}px)`]: {
+            display: "grid",
+            gridTemplateColumns: "1fr 2fr",
+            gridGap: theme.spacing,
+          }
         }}
       >
         <div>

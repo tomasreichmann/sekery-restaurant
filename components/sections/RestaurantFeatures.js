@@ -9,6 +9,7 @@ const RestaurantFeature = ({ children, iconUri = null }) => {
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center",
+    padding: theme.spacing,
   }}>
     {iconUri && <img src={iconUri} alt="" css={{
       height: theme.spacing * 3,
@@ -22,11 +23,11 @@ const RestaurantFeatures = () => {
     <section css={{ marginTop: -theme.spacing * 2, marginBottom: theme.spacing * 2 }}>
       <div
         css={{
-          padding: theme.spacing,
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr",
-          alignItems: "flex-start",
-          gridGap: theme.spacing
+          [`@media (min-width: ${theme.breakpoint.small}px)`]: {
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr 1fr",
+            alignItems: "flex-start",
+          },
         }}
       >
         <RestaurantFeature iconUri="/static/stravenky.png" >
