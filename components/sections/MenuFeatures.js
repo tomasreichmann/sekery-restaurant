@@ -8,6 +8,8 @@ const MenuFeature = ({ children, iconUri = null }) => {
     flex: "1 1 auto",
     flexDirection: "row",
     alignItems: "center",
+    paddingTop: theme.spacing,
+    paddingBottom: theme.spacing,
   }}>
     {iconUri && <img src={iconUri} alt="" css={{
       width: theme.spacing * 3,
@@ -21,7 +23,8 @@ const MenuFeatures = () => {
     <section css={{ marginTop: -theme.spacing * 2, marginBottom: theme.spacing * 2 }} >
       <div
         css={{
-          padding: theme.spacing,
+          paddingLeft: theme.spacing,
+          paddingRight: theme.spacing,
           [`@media (min-width: ${theme.breakpoint.large}px)`]: {
             display: "grid",
             gridTemplateColumns: "1fr 1fr 1fr",

@@ -2,6 +2,7 @@
 import { jsx } from "@emotion/core";
 import theme from "../../config/theme";
 import Headline from "../Headline";
+import JumpOffset from "../JumpOffset";
 
 const ThemedItem = ({ children, imageUri = null }) => {
   return <div css={{
@@ -19,7 +20,8 @@ const ThemedItem = ({ children, imageUri = null }) => {
 }
 const ThemedEvenings = () => {
   return (
-    <section css={{ marginTop: -theme.spacing * 2, marginBottom: theme.spacing * 2 }} id="tematicke-vecery">
+    <section css={{ marginTop: -theme.spacing * 2, marginBottom: theme.spacing * 2 }} >
+      <JumpOffset id="tematicke-vecery"/>
       <div
         css={{
           padding: `${theme.spacing /2}px ${theme.spacing / 2}px`,

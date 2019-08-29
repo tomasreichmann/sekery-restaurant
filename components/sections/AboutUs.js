@@ -3,13 +3,16 @@ import { jsx } from "@emotion/core";
 import theme from "../../config/theme";
 import SectionHeader from "../SectionHeading";
 import Headline from "../Headline";
+import JumpOffset from "../JumpOffset";
 
 const AboutUs = () => {
   return (
     <section
-      id="o-nas"
-      css={{ marginBottom: theme.spacing * 2 }}
+      css={{
+        marginBottom: theme.spacing * 2,
+      }}
     >
+      <JumpOffset id="o-nas"/>
       <SectionHeader backgroundUrl="https://cdn.pixabay.com/photo/2018/02/08/15/02/meat-3139641_1280.jpg">O nás</SectionHeader>
       <div
         css={{

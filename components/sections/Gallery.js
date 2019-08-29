@@ -6,6 +6,7 @@ import Link from "next/link";
 import Headline from "../Headline";
 import A from "../A";
 import HR from "../HR";
+import JumpOffset from "../JumpOffset";
 
 const Thumbnail = ({ uri, children = null, ...restProps }) => {
   return (
@@ -35,7 +36,8 @@ const Thumbnail = ({ uri, children = null, ...restProps }) => {
 
 const Gallery = () => {
   return (
-    <section css={{ marginBottom: theme.spacing * 2 }} id="galerie">
+    <section css={{ marginBottom: theme.spacing * 2 }} >
+      <JumpOffset id="galerie"/>
       <div
         css={{
           [`@media (min-width: ${theme.breakpoint.small}px)`]: {

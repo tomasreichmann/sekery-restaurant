@@ -4,6 +4,7 @@ import { useState } from "react";
 import theme from "../../config/theme";
 import SectionHeader from "../SectionHeading";
 import Menu from "../Menu";
+import JumpOffset from "../JumpOffset";
 
 const startOfWeekOffset = -1;
 
@@ -234,7 +235,8 @@ const DailyMenu = () => {
     }
   ];
   return (
-    <section css={{ marginBottom: theme.spacing * 2 }} id="denni-menu">
+    <section css={{ marginBottom: theme.spacing * 2 }} >
+      <JumpOffset id="denni-menu"/>
       <SectionHeader backgroundUrl="https://www.seriouseats.com/recipes/images/2014/12/20150110-beef-stroganoff-food-lab-28.jpg">
         Denní menu
       </SectionHeader>
@@ -245,7 +247,6 @@ const DailyMenu = () => {
             // padding: theme.spacing,
             display: "grid",
             gridTemplateColumns: `repeat(5, 1fr)`,
-            gridGap: theme.spacing,
             justifyItems: "center"
           }}
         >

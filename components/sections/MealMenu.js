@@ -3,6 +3,7 @@ import { jsx } from "@emotion/core";
 import theme from "../../config/theme";
 import SectionHeader from "../SectionHeading";
 import Menu from "../Menu";
+import JumpOffset from "../JumpOffset";
 
 const MealMenu = () => {
   const items = [
@@ -154,7 +155,8 @@ const MealMenu = () => {
     },
   ];
   return (
-    <section css={{ marginBottom: theme.spacing * 2 }} id="jidelni-listek">
+    <section css={{ marginBottom: theme.spacing * 2 }} >
+      <JumpOffset id="jidelni-listek"/>
       <SectionHeader backgroundUrl="https://cdn.pixabay.com/photo/2018/11/02/15/25/roast-goose-3790417_1280.jpg">
         Jídelní lístek
       </SectionHeader>

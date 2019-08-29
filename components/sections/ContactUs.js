@@ -5,16 +5,17 @@ import SectionHeader from "../SectionHeading";
 import Headline from "../Headline";
 import A from "../A";
 import P from "../P";
+import JumpOffset from "../JumpOffset";
 
 const ContactUs = ({...restProps}) => {
   return (
     <section
-      id="kontakt"
       css={{
         marginBottom: theme.spacing * 2
       }}
       {...restProps}
     >
+      <JumpOffset id="kontakt"/>
       <SectionHeader
         backgroundUrl="/static/smichovske-uzeniny-street.png"
       >

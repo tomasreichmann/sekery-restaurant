@@ -19,6 +19,8 @@ const color = {
 
 const spacing = 20;
 
+const menuOffset = 92;
+
 const breakpoint = {
   small: 600,
   large: 950
@@ -138,4 +140,5 @@ export default {
   global,
   shadow,
   breakpoint,
+  menuOffset,
 };

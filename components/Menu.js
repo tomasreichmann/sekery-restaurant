@@ -2,6 +2,7 @@
 import { jsx } from "@emotion/core";
 import theme from "../config/theme";
 import Headline from "./Headline";
+import JumpOffset from "./JumpOffset";
 
 
 const MenuItem = ({ name, amount = null, price }) => {
@@ -24,9 +25,10 @@ const MenuItem = ({ name, amount = null, price }) => {
   );
 };
 
-const MenuGroup = ({ items, groupName, id }) => {
+const MenuGroup = ({ children = null, items, groupName, id }) => {
   return (
     <>
+      {children}
       <Headline
         level={2}
         css={{
@@ -44,9 +46,10 @@ const MenuGroup = ({ items, groupName, id }) => {
 const MenuList = ({ items }) => {
   return (
     <>
-      {items.map((item, itemIndex) => {
+      {items.map(({id = null, ...item}, itemIndex) => {
         if (item.items && item.items.length > 0) {
-          return <MenuGroup key={`${itemIndex}-${item.groupName}`} {...item} />;
+          const jumpOffset = id ? <JumpOffset id={id} /> : null
+          return <MenuGroup key={`${itemIndex}-${item.groupName}`} {...item} >{jumpOffset}</MenuGroup>;
         }
         if (item.name) {
           return <MenuItem key={`${itemIndex}-${item.name}`} {...item} />;

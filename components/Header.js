@@ -162,6 +162,10 @@ const LargeHeader = ({ ...restProps }) => {
 const SmallHeader = ({ ...restProps }) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   return (
+    <>
+    <div css={{
+      paddingTop: theme.menuOffset - theme.spacing,
+    }}/>
     <header
       {...restProps}
       css={{
@@ -226,6 +230,7 @@ const SmallHeader = ({ ...restProps }) => {
       </div>
       {menuIsOpen && <BurgerMenu onClick={() => setMenuIsOpen(false)}/>}
     </header>
+    </>
   );
 };
 

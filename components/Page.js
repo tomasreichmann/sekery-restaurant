@@ -18,13 +18,7 @@ const Page = ({children, ...restProps}) => {
         <link href="https://fonts.googleapis.com/css?family=Magra:700|Merriweather:400,700&amp;display=swap&amp;subset=latin-ext" rel="stylesheet" />
       </Head>
       <Header />
-      <main css={{
-        // maxWidth: 1000,
-        // backgroundColor: theme.color.white,
-        // padding: theme.spacing,
-        // margin: "0 auto",
-        // boxShadow: theme.shadow.high,
-      }}>
+      <main>
         {children}
       </main>
     </div>

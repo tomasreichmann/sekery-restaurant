@@ -3,13 +3,14 @@ import { jsx } from "@emotion/core";
 import theme from "../../config/theme";
 import SectionHeader from "../SectionHeading";
 import A from "../A";
+import JumpOffset from "../JumpOffset";
 
 const Career = () => {
   return (
     <section
-      id="pracovni-prilezitosti"
       css={{ marginBottom: theme.spacing * 2 }}
     >
+      <JumpOffset id="pracovni-prilezitosti"/>
       <SectionHeader
         backgroundUrl="http://www.smichovskeuzeniny.cz/images/splash-maloobchod.jpg"
         css={{
