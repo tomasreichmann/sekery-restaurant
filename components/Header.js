@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core";
-import { useState } from "react";
+import { jsx, keyframes } from "@emotion/core";
+import { useState, useEffect } from "react";
 import Measure from "react-measure";
 
 import theme from "../config/theme";
@@ -8,6 +8,7 @@ import A from "./A";
 import IconFacebook from "./icons/IconFacebook";
 import IconInstagram from "./icons/IconInstagram";
 import IconTripadvisor from "./icons/IconTripadvisor";
+import { useScrollPosition } from "./hooks/useScrollPosition";
 
 const linkProps = {
   color: "inherit",
@@ -62,7 +63,7 @@ const SocialLinks = () => {
   );
 };
 
-const NavigationLinks = ({ onClick }) => {
+const NavigationLinks = ({ onClick = () => {} }) => {
   return (
     <>
       <A {...linkProps} href="/#denni-menu" onClick={onClick}>
@@ -97,6 +98,83 @@ const NavigationLinks = ({ onClick }) => {
         Práce
       </A>
     </>
+  );
+};
+
+const fadeIn = keyframes`
+  from {
+    transform: translate3d(0,${-theme.menuOffset}px,0);
+  }
+  to {
+    transform: translate3d(0,0,0);
+  }
+`
+
+const LargeFixedHeader = ({ ...restProps }) => {
+  return (
+    <header
+      {...restProps}
+      css={{
+        position: "fixed",
+        animation: `${fadeIn} 0.3s ease 1`,
+        left: 0,
+        top: 0,
+        right: 0,
+        zIndex: 100,
+        backgroundColor: theme.color.paperLighter,
+        padding: theme.spacing / 2,
+        fontFamily: theme.fontFamily.headline,
+        color: theme.color.primary,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        boxShadow: theme.shadow.middle
+      }}
+    >
+      <A
+        href="/"
+        hoverColor="transparent"
+        css={{
+          background: `url("/static/logo.svg") center center / contain no-repeat`,
+          width: 110,
+          height: 90,
+          flex: "0 0 auto",
+          alignSelf: "stretch",
+          color: "transparent",
+          marginRight: theme.spacing,
+          marginTop: -theme.spacing / 2,
+          marginBottom: -theme.spacing / 2
+        }}
+      >
+        Sekery Restaurant
+      </A>
+      <div css={{
+        flex: "1 1 auto",
+        textTransform: "uppercase",
+        fontSize: theme.fontSize.h4,
+        alignSelf: "center",
+      }}>
+        <NavigationLinks />
+      </div>
+      <div
+        css={{
+          flex: "0 0 auto",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "flex-end",
+          alignSelf: "stretch"
+        }}
+      >
+        <div>
+          <SocialLinks />
+        </div>
+        <div>
+          <LanguageLinks />
+        </div>
+      </div>
+    </header>
   );
 };
 
@@ -159,82 +237,118 @@ const LargeHeader = ({ ...restProps }) => {
   );
 };
 
-const SmallHeader = ({ ...restProps }) => {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+const LargeHeaderController = ({ ...restProps }) => {
+  const [isFixed, setIsFixed] = useState(false);
+  useScrollPosition(
+    ({ currPos }) => {
+      if (currPos.y > 150 && !isFixed) {
+        setIsFixed(true);
+        console.log("isFixed", isFixed, currPos.y);
+      } else if (currPos.y <= 150 && isFixed) {
+        setIsFixed(false);
+        console.log("isFixed", isFixed, currPos.y);
+      }
+    },
+    { deps: [isFixed], useWindow: true }
+  );
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      window.scroll();
+    }
+  }, [])
+
   return (
     <>
-    <div css={{
-      paddingTop: theme.menuOffset - theme.spacing,
-    }}/>
-    <header
-      {...restProps}
-      css={{
-        position: "fixed",
-        left: 0,
-        top: 0,
-        right: 0,
-        zIndex: "100",
-        backgroundColor: theme.color.paperLighter,
-        padding: theme.spacing / 2,
-        fontFamily: theme.fontFamily.headline,
-        color: theme.color.primary,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-        boxShadow: theme.shadow.middle,
-      }}
-    >
-      <button
-        css={{
-          border: 0,
-          background: "none",
-          fontSize: "2em",
-          padding: theme.spacing,
-          lineHeight: "1em",
-          cursor: "pointer"
-        }}
-        onClick={() => {
-          setMenuIsOpen(!menuIsOpen);
-        }}
-      >
-        ☰
-      </button>
-      <A
-        href="/"
-        hoverColor="transparent"
-        css={{
-          background: `url("/static/logo.svg") center center / contain no-repeat`,
-          width: 88,
-          height: 70,
-          flex: "0 0 auto",
-          alignSelf: "stretch",
-          color: "transparent",
-          marginRight: theme.spacing
-        }}
-      >
-        Sekery Restaurant
-      </A>
-      <div
-        css={{
-          flex: "1 1 auto",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          alignItems: "flex-end",
-          alignSelf: "stretch",
-        }}
-      >
-        <div><SocialLinks /></div>
-        <div><LanguageLinks /></div>
-      </div>
-      {menuIsOpen && <BurgerMenu onClick={() => setMenuIsOpen(false)}/>}
-    </header>
+      <LargeHeader {...restProps} />
+      {isFixed && <LargeFixedHeader {...restProps} />}
     </>
   );
 };
 
-const BurgerMenu = ({onClick, ...restProps}) => {
+const SmallHeader = ({ ...restProps }) => {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  return (
+    <>
+      <div
+        css={{
+          paddingTop: theme.menuOffset - theme.spacing
+        }}
+      />
+      <header
+        {...restProps}
+        css={{
+          position: "fixed",
+          left: 0,
+          top: 0,
+          right: 0,
+          zIndex: 100,
+          backgroundColor: theme.color.paperLighter,
+          padding: theme.spacing / 2,
+          fontFamily: theme.fontFamily.headline,
+          color: theme.color.primary,
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+          boxShadow: theme.shadow.middle
+        }}
+      >
+        <button
+          css={{
+            border: 0,
+            background: "none",
+            fontSize: "2em",
+            padding: theme.spacing,
+            lineHeight: "1em",
+            cursor: "pointer"
+          }}
+          onClick={() => {
+            setMenuIsOpen(!menuIsOpen);
+          }}
+        >
+          ☰
+        </button>
+        <A
+          href="/"
+          hoverColor="transparent"
+          css={{
+            background: `url("/static/logo.svg") center center / contain no-repeat`,
+            width: 110,
+            height: 90,
+            flex: "0 0 auto",
+            alignSelf: "stretch",
+            color: "transparent",
+            marginRight: theme.spacing,
+            marginTop: -theme.spacing / 2,
+            marginBottom: -theme.spacing / 2
+          }}
+        >
+          Sekery Restaurant
+        </A>
+        <div
+          css={{
+            flex: "1 1 auto",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            alignSelf: "stretch"
+          }}
+        >
+          <div>
+            <SocialLinks />
+          </div>
+          <div>
+            <LanguageLinks />
+          </div>
+        </div>
+        {menuIsOpen && <BurgerMenu onClick={() => setMenuIsOpen(false)} />}
+      </header>
+    </>
+  );
+};
+
+const BurgerMenu = ({ onClick, ...restProps }) => {
   return (
     <div
       css={{
@@ -248,11 +362,11 @@ const BurgerMenu = ({onClick, ...restProps}) => {
         alignItems: "stretch",
         textTransform: "uppercase",
         fontSize: theme.fontSize.h4,
-        boxShadow: theme.shadow.middle,
+        boxShadow: theme.shadow.middle
       }}
       {...restProps}
     >
-      <NavigationLinks onClick={onClick}/>
+      <NavigationLinks onClick={onClick} />
     </div>
   );
 };
@@ -264,7 +378,8 @@ const Header = ({ ...restProps }) => {
     <Measure
       bounds
       onResize={contentRect => {
-        const newSize = contentRect.bounds.width < theme.breakpoint.large ? "small" : "large";
+        const newSize =
+          contentRect.bounds.width < theme.breakpoint.large ? "small" : "large";
         if (newSize !== size) {
           setSize(newSize);
         }
@@ -279,7 +394,7 @@ const Header = ({ ...restProps }) => {
           }}
         >
           {size === "large" ? (
-            <LargeHeader {...restProps} />
+            <LargeHeaderController {...restProps} />
           ) : (
             <SmallHeader {...restProps} />
           )}
