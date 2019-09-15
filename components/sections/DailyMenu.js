@@ -5,6 +5,7 @@ import theme from "../../config/theme";
 import SectionHeader from "../SectionHeading";
 import Menu from "../Menu";
 import JumpOffset from "../JumpOffset";
+import sampleItems from "../../config/sampleItems";
 
 const startOfWeekOffset = -1;
 
@@ -102,141 +103,11 @@ const DailyMenu = () => {
     isTodayWeekDay ? today : thisWeek[0]
   );
 
-  const items = [
-    {
-      groupName: "Polévky",
-      items: [
-        {
-          name: "Dýňová polévka",
-          amount: "200ml",
-          price: "50 Kč"
-        },
-        {
-          name: "Kuřecí vývar",
-          amount: "200ml",
-          price: "40 Kč"
-        }
-      ]
-    },
-    {
-      groupName: "Hlavní jídla",
-      items: [
-        {
-          name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
-        },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
-        {
-          name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
-        },
-        {
-          name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
-        },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
-        {
-          name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
-        },
-        {
-          name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
-        },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
-        {
-          name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
-        },
-        {
-          name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
-        },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
-        {
-          name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
-        },
-        {
-          name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
-        },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
-        {
-          name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
-        },
-        {
-          name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
-        },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
-        {
-          name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
-        },
-        {
-          name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
-        },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
-        {
-          name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
-        },
-        {
-          name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
-        },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
-        {
-          name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
-        },
-        {
-          name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
-        },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
-        {
-          name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
-        },
-        {
-          name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
-        },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
-        {
-          name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
-        }
-      ]
-    }
-  ];
+  const items = sampleItems; // TODO!!!
+
   return (
-    <section css={{ marginBottom: theme.spacing * 2 }} >
-      <JumpOffset id="denni-menu"/>
+    <section css={{ marginBottom: theme.spacing * 2 }}>
+      <JumpOffset id="denni-menu" />
       <SectionHeader backgroundUrl="https://www.seriouseats.com/recipes/images/2014/12/20150110-beef-stroganoff-food-lab-28.jpg">
         Denní menu
       </SectionHeader>

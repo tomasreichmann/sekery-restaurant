@@ -18,6 +18,7 @@ const color = {
 };
 
 const spacing = 20;
+const borderRadius = 3;
 
 const menuOffset = 92;
 
@@ -137,6 +138,7 @@ export default {
   lineHeight,
   typography,
   spacing,
+  borderRadius,
   global,
   shadow,
   breakpoint,

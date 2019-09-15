@@ -5,7 +5,15 @@ import Headline from "./Headline";
 import JumpOffset from "./JumpOffset";
 
 
-const MenuItem = ({ name, amount = null, price }) => {
+export const MenuItem = ({
+  id = null,
+  name = "",
+  children = null,
+  amount = 100,
+  amountUnit = "g",
+  price = 0,
+  priceUnit = "Kč",
+}) => {
   return (
     <div
       css={{
@@ -18,14 +26,15 @@ const MenuItem = ({ name, amount = null, price }) => {
         breakInside: "avoid"
       }}
     >
-      <div css={{ whiteSpace: "nowrap" }}>{amount}</div>
+      <div css={{ whiteSpace: "nowrap" }}>{amount}&nbsp;{amountUnit}</div>
       <div>{name}</div>
-      <div css={{ whiteSpace: "nowrap" }}>{price}</div>
+      <div css={{ whiteSpace: "nowrap" }}>{price}&nbsp;{priceUnit}</div>
+      {children}
     </div>
   );
 };
 
-const MenuGroup = ({ children = null, items, groupName, id }) => {
+export const MenuGroup = ({ children = null, items, groupName, id }) => {
   return (
     <>
       {children}
@@ -43,16 +52,16 @@ const MenuGroup = ({ children = null, items, groupName, id }) => {
   );
 };
 
-const MenuList = ({ items }) => {
+const MenuList = ({ items, MenuItemComponent = MenuItem }) => {
   return (
     <>
       {items.map(({id = null, ...item}, itemIndex) => {
-        if (item.items && item.items.length > 0) {
+        if (item.items) {
           const jumpOffset = id ? <JumpOffset id={id} /> : null
           return <MenuGroup key={`${itemIndex}-${item.groupName}`} {...item} >{jumpOffset}</MenuGroup>;
         }
         if (item.name) {
-          return <MenuItem key={`${itemIndex}-${item.name}`} {...item} />;
+          return <MenuItemComponent key={`${itemIndex}-${item.name}`} {...item} />;
         }
         return item.content;
       })}
@@ -60,13 +69,13 @@ const MenuList = ({ items }) => {
   );
 };
 
-const Menu = ({ items = [], children = null, ...restProps }) => {
+const Menu = ({ items = [], children = null, columnCount = 2, MenuItemComponent = MenuItem, ...restProps }) => {
   return (
     <div
         css={{
           padding: theme.spacing,
           [`@media (min-width: ${theme.breakpoint.large}px)`]: {
-            columnCount: 2,
+            columnCount,
             columnGap: theme.spacing * 2,
             maxWidth: 900,
             margin: `0 auto`,
@@ -75,7 +84,7 @@ const Menu = ({ items = [], children = null, ...restProps }) => {
         {...restProps}
       >
         {children}
-        <MenuList items={items} />
+        <MenuList items={items} MenuItemComponent={MenuItemComponent} />
       </div>
   );
 };

@@ -390,7 +390,7 @@ const Header = ({ ...restProps }) => {
           ref={measureRef}
           css={{
             position: "relative",
-            zIndex: "100"
+            zIndex: 100
           }}
         >
           {size === "large" ? (

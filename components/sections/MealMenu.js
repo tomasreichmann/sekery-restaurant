@@ -12,13 +12,15 @@ const MealMenu = () => {
       items: [
         {
           name: "Dýňová polévka",
-          amount: "200ml",
-          price: "50 Kč"
+          amount: 200,
+          amountUnit: "ml",
+          price: 50
         },
         {
           name: "Kuřecí vývar",
-          amount: "200ml",
-          price: "40 Kč"
+          amount: 200,
+          amountUnit: "ml",
+          price: 40
         }
       ]
     },
@@ -27,113 +29,113 @@ const MealMenu = () => {
       items: [
         {
           name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
+          amount: 300,
+          price: 120
         },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
+        { name: "Guláš s chlebem", amount: 250, price: 90 },
         {
           name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
+          amount: 200,
+          price: 140
         },
         {
           name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
+          amount: 300,
+          price: 120
         },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
+        { name: "Guláš s chlebem", amount: 250, price: 90 },
         {
           name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
+          amount: 200,
+          price: 140
         },
         {
           name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
+          amount: 300,
+          price: 120
         },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
+        { name: "Guláš s chlebem", amount: 250, price: 90 },
         {
           name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
+          amount: 200,
+          price: 140
         },
         {
           name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
+          amount: 300,
+          price: 120
         },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
+        { name: "Guláš s chlebem", amount: 250, price: 90 },
         {
           name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
+          amount: 200,
+          price: 140
         },
         {
           name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
+          amount: 300,
+          price: 120
         },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
+        { name: "Guláš s chlebem", amount: 250, price: 90 },
         {
           name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
+          amount: 200,
+          price: 140
         },
         {
           name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
+          amount: 300,
+          price: 120
         },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
+        { name: "Guláš s chlebem", amount: 250, price: 90 },
         {
           name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
+          amount: 200,
+          price: 140
         },
         {
           name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
+          amount: 300,
+          price: 120
         },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
+        { name: "Guláš s chlebem", amount: 250, price: 90 },
         {
           name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
+          amount: 200,
+          price: 140
         },
         {
           name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
+          amount: 300,
+          price: 120
         },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
+        { name: "Guláš s chlebem", amount: 250, price: 90 },
         {
           name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
+          amount: 200,
+          price: 140
         },
         {
           name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
+          amount: 300,
+          price: 120
         },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
+        { name: "Guláš s chlebem", amount: 250, price: 90 },
         {
           name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
+          amount: 200,
+          price: 140
         },
         {
           name: "Svíčková na smetaně s houskovým knedlíkem",
-          amount: "300g",
-          price: "120 Kč"
+          amount: 300,
+          price: 120
         },
-        { name: "Guláš s chlebem", amount: "250g", price: "90 Kč" },
+        { name: "Guláš s chlebem", amount: 250, price: 90 },
         {
           name: "Kuřecí řízek s bramborovou kaší",
-          amount: "200g",
-          price: "140 Kč"
+          amount: 200,
+          price: 140
         }
       ]
     },
@@ -143,20 +145,22 @@ const MealMenu = () => {
       items: [
         {
           name: "Kozel 10°",
-          amount: "500ml",
-          price: "35 Kč"
+          amount: 500,
+          amountUnit: "ml",
+          price: 35
         },
         {
           name: "Matonni voda sycená",
-          amount: "250ml",
-          price: "20 Kč"
+          amount: 250,
+          amountUnit: "ml",
+          price: 20
         }
       ]
-    },
+    }
   ];
   return (
-    <section css={{ marginBottom: theme.spacing * 2 }} >
-      <JumpOffset id="jidelni-listek"/>
+    <section css={{ marginBottom: theme.spacing * 2 }}>
+      <JumpOffset id="jidelni-listek" />
       <SectionHeader backgroundUrl="https://cdn.pixabay.com/photo/2018/11/02/15/25/roast-goose-3790417_1280.jpg">
         Jídelní lístek
       </SectionHeader>
