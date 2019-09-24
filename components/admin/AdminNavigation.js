@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import theme from '../config/theme';
+import theme from '../../config/theme';
 import Link from 'next/link';
-import A from './A';
+import A from '../A';
 
 const linkProps = {
   css: css({
@@ -15,8 +15,6 @@ const linkProps = {
     marginRight: theme.spacing,
   }),
 };
-
-console.log('linkProps', linkProps);
 
 const AdminNavigation = ({...restProps}) => {
   return (
@@ -34,6 +32,9 @@ const AdminNavigation = ({...restProps}) => {
       </Link>
       <Link href="/admin/vecerni-menu" >
         <A {...linkProps}>Večerní menu</A>
+      </Link>
+      <Link href="/admin/denni-menu" >
+        <A {...linkProps}>Denní menu</A>
       </Link>
     </div>
   )

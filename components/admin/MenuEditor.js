@@ -22,7 +22,6 @@ export const EditableMenuItem = ({
   setItem
 }) => {
   const onPropChange = prop => value => {
-    console.log("onPropChange", prop, value);
     const item = {
       id,
       name,
@@ -33,7 +32,6 @@ export const EditableMenuItem = ({
       priceUnit
     };
     item[prop] = value;
-    console.log("item", item);
     setItem(item);
   };
   return (
@@ -158,23 +156,18 @@ const EditableMenuList = ({ items, setItems, groupName = null }) => {
   }
 
   const setItem = index => item => {
-    console.log("setItem", index, item);
     const newItems = [...items];
     newItems[index] = item;
-    console.log("newItems", newItems);
     setNewType(null);
     setItems(newItems);
   };
 
   const removeItem = index => () => {
-    console.log("removeItem", index);
     const newItems = [...items.slice(0, index), ...items.slice(index + 1)];
-    console.log("newItems", newItems);
     setItems(newItems);
   };
 
   const moveItem = (index, newIndex) => () => {
-    console.log("moveItem", index, newIndex);
     const item = items[index];
     const itemsWithoutItem = [
       ...items.slice(0, index),
@@ -185,7 +178,6 @@ const EditableMenuList = ({ items, setItems, groupName = null }) => {
       item,
       ...itemsWithoutItem.slice(newIndex)
     ];
-    console.log("newItems", newItems);
     setItems(newItems);
   };
 
@@ -299,7 +291,7 @@ const EditableMenu = ({
   );
 };
 
-const MenuEditor = ({ menu = [], setMenu }) => {
+const MenuEditor = ({ items = [], setItems }) => {
   return (
     <div
       css={{
@@ -312,14 +304,14 @@ const MenuEditor = ({ menu = [], setMenu }) => {
       }}
     >
       <div>
-        <EditableMenu items={menu} setItems={setMenu} />
+        <EditableMenu items={items} setItems={setItems} />
       </div>
       {/* <div>
         <Menu items={presets} columnCount={1} MenuItemComponent={SelectableMenuItem}/>
       </div> */}
       <div>
         <Headline level={2}>Náhled</Headline>
-        <Menu items={menu} columnCount={1} css={{ padding: 0 }} />
+        <Menu items={items} columnCount={1} css={{ padding: 0 }} />
       </div>
     </div>
   );

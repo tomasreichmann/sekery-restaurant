@@ -2,16 +2,17 @@
 import { jsx } from "@emotion/core";
 import { useState, useEffect, useCallback } from "react";
 import isEqual from "lodash/isEqual";
-import Page from "../../components/Page";
-import theme from "../../config/theme";
-import AdminNavigation from "../../components/admin/AdminNavigation";
-import Headline from "../../components/Headline";
-import Button from "../../components/controls/Button";
-import MenuEditor from "../../components/admin/MenuEditor";
-import { setMealMenu, getMealMenu } from "../../firestore/firestore";
-import { DefaultLoader, InlineLoader } from "../../components/Loader";
+import Page from "../../../components/Page";
+import theme from "../../../config/theme";
+import AdminNavigation from "../../../components/admin/AdminNavigation";
+import Headline from "../../../components/Headline";
+import Button from "../../../components/controls/Button";
+import MenuEditor from "../../../components/admin/MenuEditor";
+import { setDailyMenu, getDailyMenu } from "../../../firestore/firestore";
+import { DefaultLoader, InlineLoader } from "../../../components/Loader";
 
-function EveningMenu({ initialItems }) {
+function LunchMenu({ menu, date }) {
+  const initialItems = menu !== null ? menu.items : null;
   const [items, setItems] = useState(null);
   const [saveState, setSaveState] = useState({ isLoading: true, error: null, items });
 
@@ -25,26 +26,27 @@ function EveningMenu({ initialItems }) {
   const saveMenu = useCallback(items => {
     console.log("saveMenu", items);
 
-    const eveningMenu = {
-      items
-    };
-
     setSaveState({ ...saveState, isLoading: true })
 
-    setMealMenu(eveningMenu)
+    setDailyMenu({
+      ...menu,
+      items
+    })
       .then(() => {
         setSaveState({ isLoading: false, error: null, items })
       })
       .catch(error => {
         setSaveState({ ...saveState, isLoading: false, error })
       });
-  }, [saveState]);
+  }, [saveState, menu]);
+
+  const title = `Denní menu ${date}`;
 
   return (
-    <Page title="Večerní menu">
+    <Page title={title}>
       <AdminNavigation />
       <section css={{ padding: theme.spacing }}>
-        <Headline level={1}>Večerní menu</Headline>
+        <Headline level={1}>{title}</Headline>
         {items === null ? (
           <DefaultLoader />
         ) : (
@@ -65,9 +67,10 @@ function EveningMenu({ initialItems }) {
   );
 }
 
-EveningMenu.getInitialProps = async () => {
-  const mealMenu = await getMealMenu();
-  return { initialItems: mealMenu.items };
+LunchMenu.getInitialProps = async ({query: {date}}) => {
+  console.log('date', date);
+  const menu = await getDailyMenu(date);
+  return { menu, date };
 };
 
-export default EveningMenu;
+export default LunchMenu;
