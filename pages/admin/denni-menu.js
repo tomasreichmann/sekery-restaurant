@@ -7,7 +7,7 @@ import Page from "../../components/Page";
 import theme from "../../config/theme";
 import AdminNavigation from "../../components/admin/AdminNavigation";
 import Headline from "../../components/Headline";
-import { getDailyMenus, setDailyMenu } from "../../firestore/firestore";
+import { getDailyMenus, setDailyMenu } from "../../firebase/firestore";
 import { LoaderBody } from "../../components/Loader";
 import Button from "../../components/controls/Button";
 import Input from "../../components/controls/Input";

@@ -2601,6 +2601,11 @@ detect-libc@^1.0.2:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
 
+dialog-polyfill@^0.4.7:
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/dialog-polyfill/-/dialog-polyfill-0.4.10.tgz#c4ea68a0deed4abb59a6a2a025c548b278cd532e"
+  integrity sha512-j5yGMkP8T00UFgyO+78OxiN5vC5dzRQF3BEio+LhNvDbyfxWBsi3sfPArDm54VloaJwy2hm3erEiDWqHRC8rzw==
+
 diffie-hellman@^5.0.0:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/diffie-hellman/-/diffie-hellman-5.0.3.tgz#40e8ee98f55a2149607146921c63e1ae5f3d2875"
@@ -2964,6 +2969,13 @@ firebase@^6.6.2:
     "@firebase/polyfill" "0.3.22"
     "@firebase/storage" "0.3.12"
     "@firebase/util" "0.2.28"
+
+firebaseui@^4.1.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/firebaseui/-/firebaseui-4.2.0.tgz#584c7210fe3536e5603f9e14ba122f541ae63fba"
+  integrity sha512-+n8GVms0TlxU+AIdmuWhgQthqKmUpkjhfZBbsZIdWU19Ddkr5cn7hrSlNwC9faKkpCwGEpai6Nv+hYNqNM5JkQ==
+  dependencies:
+    dialog-polyfill "^0.4.7"
 
 flush-write-stream@^1.0.0:
   version "1.1.1"
@@ -4797,6 +4809,13 @@ react-error-overlay@5.1.6:
   version "5.1.6"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.6.tgz#0cd73407c5d141f9638ae1e0c63e7b2bf7e9929d"
   integrity sha512-X1Y+0jR47ImDVr54Ab6V9eGk0Hnu7fVWGeHQSOXHf/C2pF9c6uy3gef8QUeuUiWlNb0i08InPSE5a/KJzNzw1Q==
+
+react-firebaseui@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-firebaseui/-/react-firebaseui-4.0.0.tgz#6e1892831b2a0ee86d2dcae16c4b724cf299d566"
+  integrity sha512-sQjVIXjahJ6YcjBRKmjW0wQb8wApi8AcFBa14H+TSEZWkRxPgQ1C4370P3FJubGXGEmxkwZfddqDk4/p5xW1uA==
+  dependencies:
+    firebaseui "^4.1.0"
 
 react-is@16.8.6:
   version "16.8.6"

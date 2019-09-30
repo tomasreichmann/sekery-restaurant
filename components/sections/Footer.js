@@ -5,7 +5,7 @@ import A from "../A";
 
 const Footer = () => {
   return (
-    <section >
+    <section>
       <div
         css={{
           padding: theme.spacing,
@@ -16,25 +16,26 @@ const Footer = () => {
           gridGap: theme.spacing,
           [`@media (min-width: ${theme.breakpoint.small}px)`]: {
             height: 150,
-            gridTemplateColumns: "1fr 1fr 1fr",
+            gridTemplateColumns: "1fr 1fr 1fr"
           },
           [`@media (min-width: ${theme.breakpoint.large}px)`]: {
-            height: 200,
-          },
+            height: 200
+          }
         }}
-        >
-        <A href="http://smichovske-uzeniny.cz" css={{
-          height: 150,
-          background: `url(/static/smichovske-uzeniny.png) center center / cover`
-        }} title="Smíchovské uzeniny"></A>
-        <A href="http://andel-catering.cz"  css={{
-          height: 150,
-          background: `url(/static/andel-catering.png) center center / cover`
-        }} title="Anděl Catering"></A>
-        <A href="http://zverina-praha.cz"  css={{
-          height: 150,
-          background: `url(/static/zverina-praha.png) center center / cover`
-        }} title="Zvěřina Praha"></A>
+      >
+        <A href="http://smichovske-uzeniny.cz" title="Smíchovské uzeniny">
+          <img
+            src="/static/smichovske-uzeniny.png"
+            alt=""
+            css={{ width: "100%", maxWidth: 200 }}
+          />
+        </A>
+        <A href="http://andel-catering.cz" title="Anděl Catering">
+          <img src="/static/andel-catering.png" alt="" css={{ width: "100%", maxWidth: 200 }} />
+        </A>
+        <A href="http://zverina-praha.cz" title="Zvěřina Praha">
+          <img src="/static/zverina-praha.png" alt="" css={{ width: "100%", maxWidth: 200 }} />
+        </A>
       </div>
     </section>
   );

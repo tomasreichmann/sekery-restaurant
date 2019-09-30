@@ -22,7 +22,6 @@ const Photos = ({ items, heading = null, ...restProps }) => {
   return (
     <>
       { heading && <Headline level={2} css={{
-          gridColumn: "1 / -1",
           textAlign: "center",
           padding: theme.spacing,
           paddingTop: theme.spacing * 2,
@@ -33,35 +32,20 @@ const Photos = ({ items, heading = null, ...restProps }) => {
       <div
         {...restProps}
         css={{
-          gridColumn: "1 / -1",
-          [`@media (min-width: ${theme.breakpoint.small}px)`]: {
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gridAutoFlow: "dense",
-          },
           backgroundColor: theme.color.black,
         }}
       >
-        {items.map((item, itemIndex) => {
-          const isSpanningLeft = (itemIndex % 6 === 0);
-          const isSpanningRight = ((itemIndex + shift) % 6 === 0);
-          const shouldSpan = isSpanningLeft || isSpanningRight;
-          const spanStyle = {
-            gridColumn: `span 2`,
-            gridRow: `span 2`
-          }
+        {items.map((item) => {
           if (item.items) {
             return <Photos {...item}/>;
           }
           return (
-            <Image
-              key={item.uri}
-              uri={item.uri}
-              css={{
-                ...(shouldSpan ? spanStyle : {}),
-                color: "white",
-              }}
-            />
+            <div key={item.uri} css={{
+              width: "100%",
+              height: `calc(100vh - ${theme.menuOffset}px)`,
+              background: `url(${item.uri}) center center / contain no-repeat`,
+              marginBottom: theme.spacing,
+            }}/>
           );
         })}
       </div>

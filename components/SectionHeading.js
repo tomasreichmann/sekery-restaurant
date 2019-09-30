@@ -9,7 +9,6 @@ const SectionHeader = ({
 }) => {
   return (
     <header
-      {...restProps}
       css={{
         position: "relative",
         display: "flex",
@@ -30,8 +29,9 @@ const SectionHeader = ({
         textShadow: `0 0 16px rgba(0,0,0,1)`,
         // boxShadow: theme.shadow.middle,
         letterSpacing: 2,
-        textTransform: "uppercase"
+        textTransform: "uppercase",
       }}
+      {...restProps}
     >
       {children}
     </header>

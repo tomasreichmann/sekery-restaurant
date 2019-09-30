@@ -58,11 +58,11 @@ const ContactUs = ({...restProps}) => {
           </Headline>
 
           <Headline level={3}>Otevírací doba</Headline>
-          <P>PO-PÁ 8-15 17-22</P>
+          <P>PO-PÁ 6:30-18:30</P>
           <P>
-            IČ 123456789
+            IČ 69823987
             <br />
-            DIČ CZ123456789
+            DIČ CZ7504100186
           </P>
         </div>
         <div>

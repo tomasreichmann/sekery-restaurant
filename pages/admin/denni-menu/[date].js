@@ -8,7 +8,7 @@ import AdminNavigation from "../../../components/admin/AdminNavigation";
 import Headline from "../../../components/Headline";
 import Button from "../../../components/controls/Button";
 import MenuEditor from "../../../components/admin/MenuEditor";
-import { setDailyMenu, getDailyMenu } from "../../../firestore/firestore";
+import { setDailyMenu, getDailyMenu } from "../../../firebase/firestore";
 import { DefaultLoader, InlineLoader } from "../../../components/Loader";
 
 function LunchMenu({ menu, date }) {

@@ -70,16 +70,12 @@ const NavigationLinks = ({ onClick = () => {} }) => {
         Denní menu
       </A>
       &emsp;
-      <A {...linkProps} href="/#jidelni-listek" onClick={onClick}>
-        Jídelní lístek
-      </A>
-      &emsp;
       <A {...linkProps} href="/#napojovy-listek" onClick={onClick}>
-        Nápoje
+        Nápojový lístek
       </A>
       &emsp;
-      <A {...linkProps} href="/#tematicke-vecery" onClick={onClick}>
-        Tematické večery
+      <A {...linkProps} href="/#vecerni-menu" onClick={onClick}>
+        Večerní menu
       </A>
       &emsp;
       <A {...linkProps} href="/#o-nas" onClick={onClick}>

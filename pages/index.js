@@ -11,13 +11,18 @@ import ContactUs from "../components/sections/ContactUs";
 import RestaurantFeatures from "../components/sections/RestaurantFeatures";
 import Career from "../components/sections/Career";
 import Footer from "../components/sections/Footer";
+import Welcome from "../components/sections/Welcome";
+import DrinkMenu from "../components/sections/DrinkMenu";
+import EveningMenu from "../components/sections/EveningMenu";
 
 const Home = () => (
   <Page>
+    <Welcome />
     <DailyMenu />
     <MealMenu />
+    <DrinkMenu />
+    <EveningMenu />
     <MenuFeatures />
-    <ThemedEvenings />
     <AboutUs />
     <Gallery />
     <ContactUs />

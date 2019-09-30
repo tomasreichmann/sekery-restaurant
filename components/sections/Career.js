@@ -11,14 +11,6 @@ const Career = () => {
       css={{ marginBottom: theme.spacing * 2 }}
     >
       <JumpOffset id="pracovni-prilezitosti"/>
-      <SectionHeader
-        backgroundUrl="http://www.smichovskeuzeniny.cz/images/splash-maloobchod.jpg"
-        css={{
-          backgroundAttachment: "scroll"
-        }}
-      >
-        Pracovní příležitosti
-      </SectionHeader>
       <div
         css={{
           padding: theme.spacing,

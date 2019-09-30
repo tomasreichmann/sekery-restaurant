@@ -40,36 +40,18 @@ const Gallery = () => {
       <JumpOffset id="galerie"/>
       <div
         css={{
-          [`@media (min-width: ${theme.breakpoint.small}px)`]: {
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-          },
           color: theme.color.white,
           textTransform: "uppercase",
           textShadow: `rgba(0, 0, 0, 1) 0 0 16px`,
         }}
       >
-        <Link href="/galerie/interier">
-          <A color="inherit" hoverColor="inherit" textDecoration="none" css={{
-            gridColumn: "span 2",
-            gridRow: "span 2",
-          }}>
-            <Thumbnail uri="https://upload.wikimedia.org/wikipedia/commons/a/a2/Ikea_canteen_in_Sydney.jpeg">
-              <Headline level={1} css={{ color: "inherit"}}>Interier</Headline>
-            </Thumbnail>
-          </A>
-        </Link>
-        <Link href="/galerie/jidla">
-        <A color="inherit" hoverColor="inherit" textDecoration="none" >
-            <Thumbnail uri="https://storage.needpix.com/rsynced_images/meat-and-chips-2149986_1280.jpg">
-              <Headline level={1} css={{ color: "inherit"}}>Jídla</Headline>
-            </Thumbnail>
-          </A>
-        </Link>
-        <Link href="/galerie/udalosti">
-        <A color="inherit" hoverColor="inherit" textDecoration="none" >
-            <Thumbnail uri="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPJYFZnUYPLRq7tynkG2Np-UlCBG5ItWcs_DMfA-T5LeQfxuPM8g">
-              <Headline level={1} css={{ color: "inherit"}}>Události</Headline>
+        <Link href="/galerie">
+          <A color="inherit" hoverColor="inherit" textDecoration="none">
+            <Thumbnail uri="/static/galerie.jpg" css={{
+              paddingTop: "32%",
+              backgroundPositionY: "35%",
+            }}>
+              <Headline level={1} css={{ color: "inherit"}}>Galerie</Headline>
             </Thumbnail>
           </A>
         </Link>

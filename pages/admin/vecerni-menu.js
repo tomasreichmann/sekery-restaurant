@@ -8,7 +8,7 @@ import AdminNavigation from "../../components/admin/AdminNavigation";
 import Headline from "../../components/Headline";
 import Button from "../../components/controls/Button";
 import MenuEditor from "../../components/admin/MenuEditor";
-import { setMealMenu, getMealMenu } from "../../firestore/firestore";
+import { setEveningMenu, getEveningMenu } from "../../firebase/firestore";
 import { DefaultLoader, InlineLoader } from "../../components/Loader";
 
 function EveningMenu({ initialItems }) {
@@ -23,15 +23,13 @@ function EveningMenu({ initialItems }) {
   }, [initialItems, items]);
 
   const saveMenu = useCallback(items => {
-    console.log("saveMenu", items);
-
-    const eveningMenu = {
+    const staticDailyMenu = {
       items
     };
 
     setSaveState({ ...saveState, isLoading: true })
 
-    setMealMenu(eveningMenu)
+    setEveningMenu(staticDailyMenu)
       .then(() => {
         setSaveState({ isLoading: false, error: null, items })
       })
@@ -66,8 +64,8 @@ function EveningMenu({ initialItems }) {
 }
 
 EveningMenu.getInitialProps = async () => {
-  const mealMenu = await getMealMenu();
-  return { initialItems: mealMenu.items };
+  const menu = await getEveningMenu();
+  return { initialItems: menu ? menu.items : [] };
 };
 
 export default EveningMenu;

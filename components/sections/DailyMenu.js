@@ -6,7 +6,7 @@ import SectionHeader from "../SectionHeading";
 import Menu from "../Menu";
 import JumpOffset from "../JumpOffset";
 import Loader from "../Loader";
-import { getDailyMenu } from "../../firestore/firestore";
+import { getDailyMenu } from "../../firebase/firestore";
 import Message from "../Message";
 
 const startOfWeekOffset = -1;
@@ -142,9 +142,13 @@ const DailyMenu = () => {
   );
 
   return (
-    <section css={{ marginBottom: theme.spacing * 2 }}>
+    <section >
       <JumpOffset id="denni-menu" />
-      <SectionHeader backgroundUrl="https://www.seriouseats.com/recipes/images/2014/12/20150110-beef-stroganoff-food-lab-28.jpg">
+      <SectionHeader backgroundUrl="/static/denni-menu.jpg" css={{
+        backgroundAttachment: "scroll",
+        backgroundPosition: "center 88%",
+        minHeight: 300,
+      }}>
         Denní menu
       </SectionHeader>
 
@@ -156,7 +160,7 @@ const DailyMenu = () => {
                 css={{
                   padding: theme.spacing,
                   [`@media (min-width: ${theme.breakpoint.large}px)`]: {
-                    columnCount: 2,
+                    columnCount: 1,
                     columnGap: theme.spacing * 2,
                     maxWidth: 900,
                     margin: `0 auto`
@@ -170,7 +174,7 @@ const DailyMenu = () => {
               </div>
             );
           }
-          return <Menu items={items}>{menuHeading}</Menu>;
+          return <Menu items={items} columnCount={1}>{menuHeading}</Menu>;
         }}
       </Loader>
     </section>
