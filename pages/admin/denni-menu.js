@@ -1,11 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import { useState, useEffect } from "react";
-import Router from 'next/router';
+import Router from "next/router";
 
-import Page from "../../components/Page";
 import theme from "../../config/theme";
-import AdminNavigation from "../../components/admin/AdminNavigation";
 import Headline from "../../components/Headline";
 import { getDailyMenus, setDailyMenu } from "../../firebase/firestore";
 import { LoaderBody } from "../../components/Loader";
@@ -14,11 +12,12 @@ import Input from "../../components/controls/Input";
 import { getStringDate } from "../../components/sections/DailyMenu";
 import Link from "next/link";
 import A from "../../components/A";
+import AdminPage from "../../components/admin/AdminPage";
 
-const createMenu = (date) => {
-  console.log('date', date);
-  setDailyMenu({ date, items: [] })
-    .then(() => Router.push(`/admin/denni-menu/${date}`))
+const createMenu = date => {
+  setDailyMenu({ date, items: [] }).then(() =>
+    Router.push(`/admin/denni-menu/${date}`)
+  );
 };
 
 function LunchMenus({ initialMenus }) {
@@ -37,8 +36,7 @@ function LunchMenus({ initialMenus }) {
   }, [initialMenus, menusState]);
 
   return (
-    <Page title="Denní menu">
-      <AdminNavigation />
+    <AdminPage title="Denní menu">
       <section css={{ padding: theme.spacing }}>
         <Headline level={1}>Denní menu</Headline>
         <LoaderBody state={menusState}>
@@ -53,8 +51,16 @@ function LunchMenus({ initialMenus }) {
                       value={date}
                       onChange={date => setDate(date)}
                     />
-                  </span>&emsp;<Button disabled={!date || menuAlreadyExists} onClick={() => createMenu(date)}>Vytvořit menu</Button>&emsp;{menuAlreadyExists && "Menu pro tento den již existuje." }
-
+                  </span>
+                  &emsp;
+                  <Button
+                    disabled={!date || menuAlreadyExists}
+                    onClick={() => createMenu(date)}
+                  >
+                    Vytvořit menu
+                  </Button>
+                  &emsp;
+                  {menuAlreadyExists && "Menu pro tento den již existuje."}
                 </div>
                 {data.length === 0 ? (
                   <p>Nebyly nalezeny žádné položky</p>
@@ -64,7 +70,10 @@ function LunchMenus({ initialMenus }) {
                       // TODO: počet položek, mazání.
                       return (
                         <p>
-                          <Link href={`/admin/denni-menu/${menu.date}`}><A>{menu.date}</A></Link> { menu.items.length } položek.
+                          <Link href={`/admin/denni-menu/${menu.date}`}>
+                            <A>{menu.date}</A>
+                          </Link>{" "}
+                          {menu.items.length} položek.
                         </p>
                       );
                     })}
@@ -75,7 +84,7 @@ function LunchMenus({ initialMenus }) {
           }}
         </LoaderBody>
       </section>
-    </Page>
+    </AdminPage>
   );
 }
 

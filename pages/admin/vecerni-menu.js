@@ -2,7 +2,6 @@
 import { jsx } from "@emotion/core";
 import { useState, useEffect, useCallback } from "react";
 import isEqual from "lodash/isEqual";
-import Page from "../../components/Page";
 import theme from "../../config/theme";
 import AdminNavigation from "../../components/admin/AdminNavigation";
 import Headline from "../../components/Headline";
@@ -10,6 +9,7 @@ import Button from "../../components/controls/Button";
 import MenuEditor from "../../components/admin/MenuEditor";
 import { setEveningMenu, getEveningMenu } from "../../firebase/firestore";
 import { DefaultLoader, InlineLoader } from "../../components/Loader";
+import AdminPage from "../../components/admin/AdminPage";
 
 function EveningMenu({ initialItems }) {
   const [items, setItems] = useState(null);
@@ -39,8 +39,7 @@ function EveningMenu({ initialItems }) {
   }, [saveState]);
 
   return (
-    <Page title="Večerní menu">
-      <AdminNavigation />
+    <AdminPage title="Večerní menu">
       <section css={{ padding: theme.spacing }}>
         <Headline level={1}>Večerní menu</Headline>
         {items === null ? (
@@ -59,7 +58,7 @@ function EveningMenu({ initialItems }) {
           </>
         )}
       </section>
-    </Page>
+    </AdminPage>
   );
 }
 

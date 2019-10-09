@@ -4,11 +4,13 @@ import { BarLoader } from "react-spinners";
 import noop from "lodash/noop";
 import { jsx } from "@emotion/core";
 import theme from "../config/theme";
+import Button from "./controls/Button";
 
-const defaultRenderError = error => {
-  <div>
+const defaultRenderError = (error, retry) => {
+  <div key="error" >
     <p>Došlo k chybě:</p>
     <pre>{JSON.stringify(error, null, 2)}</pre>
+    <Button onClick={() => retry()} >Zkusit znovu?</Button>
   </div>;
 };
 
@@ -48,8 +50,8 @@ export const LoaderBody = ({
   loadingProps = {}
 }) => {
   return <>
-      {state.isLoading && <LoadingComponent {...loadingProps} />}
-      {state.error && renderError(state.error)}
+      {state.isLoading && <LoadingComponent key="loading" {...loadingProps} />}
+      {state.error && renderError(state.error, retry)}
       {state.data &&
         children({
           data: state.data,

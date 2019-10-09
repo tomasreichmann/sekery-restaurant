@@ -2,7 +2,6 @@
 import { jsx } from "@emotion/core";
 import { useState, useEffect, useCallback } from "react";
 import isEqual from "lodash/isEqual";
-import Page from "../../../components/Page";
 import theme from "../../../config/theme";
 import AdminNavigation from "../../../components/admin/AdminNavigation";
 import Headline from "../../../components/Headline";
@@ -10,6 +9,7 @@ import Button from "../../../components/controls/Button";
 import MenuEditor from "../../../components/admin/MenuEditor";
 import { setDailyMenu, getDailyMenu } from "../../../firebase/firestore";
 import { DefaultLoader, InlineLoader } from "../../../components/Loader";
+import AdminPage from "../../../components/admin/AdminPage";
 
 function LunchMenu({ menu, date }) {
   const initialItems = menu !== null ? menu.items : null;
@@ -43,8 +43,7 @@ function LunchMenu({ menu, date }) {
   const title = `Denní menu ${date}`;
 
   return (
-    <Page title={title}>
-      <AdminNavigation />
+    <AdminPage title={title}>
       <section css={{ padding: theme.spacing }}>
         <Headline level={1}>{title}</Headline>
         {items === null ? (
@@ -63,7 +62,7 @@ function LunchMenu({ menu, date }) {
           </>
         )}
       </section>
-    </Page>
+    </AdminPage>
   );
 }
 
