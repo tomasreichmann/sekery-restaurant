@@ -1,5 +1,12 @@
+const apiKey = FIREBASE_API_KEY;
+
+if (!apiKey) {
+  console.log('FIREBASE_API_KEY', apiKey);
+  throw new Error("missing firebase api key");
+}
+
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey,
   authDomain: "sekery-restaurant.firebaseapp.com",
   databaseURL: "https://sekery-restaurant.firebaseio.com",
   projectId: "sekery-restaurant",

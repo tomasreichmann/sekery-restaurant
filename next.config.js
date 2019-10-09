@@ -1,18 +1,17 @@
-const path = require('path');
-const Dotenv = require('dotenv-webpack');
+require('dotenv').config();
 
 module.exports = {
-  webpack(config) {
-    config.plugins = config.plugins || []
-    if (process.env.NODE_ENV !== "production") {
-      // Read the .env file
-      config.plugins.push(
-        new Dotenv({
-          path: path.join(__dirname, '.env'),
-          systemvars: true
-        })
-      )
+  webpack: (config, {webpack}) => {
+    config.plugins = config.plugins || [];
+
+    const FIREBASE_API_KEY = process.env.FIREBASE_API_KEY;
+    if (!FIREBASE_API_KEY) {
+      throw new Error("Missing process.env.FIREBASE_API_KEY");
     }
+
+    config.plugins.push(new webpack.DefinePlugin({
+      FIREBASE_API_KEY: `"${FIREBASE_API_KEY}"`
+    }));
 
     config.module.rules.push({
       test: /\.svg$/,
