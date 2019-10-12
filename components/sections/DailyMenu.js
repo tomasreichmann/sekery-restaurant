@@ -115,10 +115,11 @@ const DailyMenu = () => {
     <>
       <div
         css={{
-          // padding: theme.spacing,
           display: "grid",
-          gridTemplateColumns: `repeat(5, 1fr)`,
-          justifyItems: "center"
+          gridTemplateColumns: `repeat(5, auto)`,
+          gridGap: theme.spacing,
+          justifyItems: "center",
+          justifyContent: "center",
         }}
       >
         {thisWeek.map(stringDate => (
@@ -144,37 +145,36 @@ const DailyMenu = () => {
   return (
     <section >
       <JumpOffset id="denni-menu" />
-      <SectionHeader backgroundUrl="/static/denni-menu.jpg" css={{
+      <SectionHeader backgroundUrl="https://i.imgur.com/lERQU2O.jpg" css={{
         backgroundAttachment: "scroll",
-        backgroundPosition: "center 88%",
-        minHeight: 300,
+        backgroundPosition: "center center",
+        backgroundSize: "auto auto",
+        height: 469 - theme.spacing * 2 ,
+        minHeight: 0,
       }}>
         Denní menu
       </SectionHeader>
-
+      <div css={{ paddingTop: theme.spacing }}>{menuHeading}</div>
       <Loader task={getSelectedMenu}>
         {({ data: { items = [] } }) => {
           if (items.length === 0) {
             return (
               <div
                 css={{
-                  padding: theme.spacing,
                   [`@media (min-width: ${theme.breakpoint.large}px)`]: {
-                    columnCount: 1,
                     columnGap: theme.spacing * 2,
                     maxWidth: 900,
                     margin: `0 auto`
                   }
                 }}
               >
-                {menuHeading}
                 <Message>
                   Tento den pro vás bohužel nemáme připravené denní menu.
                 </Message>
               </div>
             );
           }
-          return <Menu items={items} columnCount={1}>{menuHeading}</Menu>;
+          return <Menu items={items} columnCount={1} />;
         }}
       </Loader>
     </section>

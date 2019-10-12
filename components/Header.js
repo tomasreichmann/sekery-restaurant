@@ -104,7 +104,7 @@ const fadeIn = keyframes`
   to {
     transform: translate3d(0,0,0);
   }
-`
+`;
 
 const LargeFixedHeader = ({ ...restProps }) => {
   return (
@@ -145,12 +145,14 @@ const LargeFixedHeader = ({ ...restProps }) => {
       >
         Sekery Restaurant
       </A>
-      <div css={{
-        flex: "1 1 auto",
-        textTransform: "uppercase",
-        fontSize: theme.fontSize.h4,
-        alignSelf: "center",
-      }}>
+      <div
+        css={{
+          flex: "1 1 auto",
+          textTransform: "uppercase",
+          fontSize: theme.fontSize.h4,
+          alignSelf: "center"
+        }}
+      >
         <NavigationLinks />
       </div>
       <div
@@ -197,7 +199,8 @@ const LargeHeader = ({ ...restProps }) => {
         <div
           css={{
             textAlign: "left",
-            marginRight: theme.spacing
+            marginRight: theme.spacing,
+            width: 140
           }}
         >
           <LanguageLinks />
@@ -216,7 +219,9 @@ const LargeHeader = ({ ...restProps }) => {
         >
           Sekery Restaurant
         </A>
-        <div css={{ textAlign: "right", marginLeft: theme.spacing }}>
+        <div
+          css={{ textAlign: "right", marginLeft: theme.spacing, width: 140 }}
+        >
           <SocialLinks />
         </div>
       </div>
@@ -239,10 +244,8 @@ const LargeHeaderController = ({ ...restProps }) => {
     ({ currPos }) => {
       if (currPos.y > 150 && !isFixed) {
         setIsFixed(true);
-        console.log("isFixed", isFixed, currPos.y);
       } else if (currPos.y <= 150 && isFixed) {
         setIsFixed(false);
-        console.log("isFixed", isFixed, currPos.y);
       }
     },
     { deps: [isFixed], useWindow: true }
@@ -251,7 +254,7 @@ const LargeHeaderController = ({ ...restProps }) => {
     if (typeof window !== undefined) {
       window.scroll();
     }
-  }, [])
+  }, []);
 
   return (
     <>

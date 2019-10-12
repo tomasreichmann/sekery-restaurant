@@ -12,10 +12,12 @@ const EveningMenu = () => {
   return (
     <section css={{ marginBottom: theme.spacing * 2 }}>
       <JumpOffset id="vecerni-menu" />
-      <SectionHeader backgroundUrl="/static/vecerni-menu.jpg" css={{
+      <SectionHeader backgroundUrl="https://i.imgur.com/s5OtnWx.jpg" css={{
         backgroundAttachment: "scroll",
-        backgroundPosition: "center 72%",
-        minHeight: 450,
+        backgroundPosition: "center center",
+        backgroundSize: "auto auto",
+        height: 505 - theme.spacing * 2 ,
+        minHeight: 0,
       }}>
         Večerní menu
       </SectionHeader>

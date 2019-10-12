@@ -13,10 +13,12 @@ const AboutUs = () => {
       }}
     >
       <JumpOffset id="o-nas"/>
-      <SectionHeader backgroundUrl="/static/o-nas.jpg" css={{
+      <SectionHeader backgroundUrl="https://i.imgur.com/aryuWJR.jpg" css={{
         backgroundAttachment: "scroll",
-        backgroundPosition: "center 50%",
-        minHeight: 450,
+        backgroundPosition: "center center",
+        backgroundSize: "auto auto",
+        height: 600 - theme.spacing * 2 ,
+        minHeight: 0,
       }}>O nás</SectionHeader>
       <div
         css={{
@@ -45,7 +47,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div>
-          <img css={{ width: "100%" }} src="/static/o-nas-2.jpg" />
+          <img css={{ width: "100%" }} src="https://i.imgur.com/NXerfN2.jpg" />
 
         </div>
       </div>

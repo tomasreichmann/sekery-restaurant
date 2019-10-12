@@ -1,12 +1,11 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import theme from "../../config/theme";
-import SectionHeader from "../SectionHeading";
 import Link from "next/link";
 import Headline from "../Headline";
 import A from "../A";
-import HR from "../HR";
 import JumpOffset from "../JumpOffset";
+import SectionHeader from "../SectionHeading";
 
 const Thumbnail = ({ uri, children = null, ...restProps }) => {
   return (
@@ -47,12 +46,13 @@ const Gallery = () => {
       >
         <Link href="/galerie">
           <A color="inherit" hoverColor="inherit" textDecoration="none">
-            <Thumbnail uri="/static/galerie.jpg" css={{
-              paddingTop: "32%",
-              backgroundPositionY: "35%",
-            }}>
-              <Headline level={1} css={{ color: "inherit"}}>Galerie</Headline>
-            </Thumbnail>
+          <SectionHeader backgroundUrl="https://i.imgur.com/uxGwldo.jpg" css={{
+            backgroundAttachment: "scroll",
+            backgroundPosition: "center center",
+            backgroundSize: "auto auto",
+            height: 528 - theme.spacing * 2 ,
+            minHeight: 0,
+          }}>Galerie</SectionHeader>
           </A>
         </Link>
       </div>
