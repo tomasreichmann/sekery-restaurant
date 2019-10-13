@@ -7,6 +7,7 @@ import Header from "../Header";
 import { AuthProvider } from "../../firebase/auth";
 import AdminNavigation from "./AdminNavigation";
 import AuthRequired from "./AuthRequired";
+import "easymde/dist/easymde.min.css";
 
 const AdminPage = ({ title = "Administrace | Restaurant Sekery", children, ...restProps }) => {
   return (
