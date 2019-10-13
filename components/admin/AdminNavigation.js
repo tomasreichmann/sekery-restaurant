@@ -26,6 +26,7 @@ const AdminNavigation = ({ ...restProps }) => {
       css={{
         display: "flex",
         flexDirection: "row",
+        flexWrap: "wrap",
         alignItems: "center",
         backgroundColor: theme.color.paperInverse,
         color: theme.color.paper,
@@ -36,6 +37,12 @@ const AdminNavigation = ({ ...restProps }) => {
     >
       <Link href="/admin">
         <A {...linkProps}>Administrace</A>
+      </Link>
+      <Link href="/admin/uvod">
+        <A {...linkProps}>Úvod</A>
+      </Link>
+      <Link href="/admin/o-nas">
+        <A {...linkProps}>O nás</A>
       </Link>
       <Link href="/admin/stala-denni-nabidka">
         <A {...linkProps}>Stálá denní nabídka</A>

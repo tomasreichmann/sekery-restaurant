@@ -93,3 +93,20 @@ export const setDailyMenu = ({...menu}) => {
     .doc(menu.date)
     .set(menu);
 };
+
+export const getSectionContent = (section) => {
+  return db
+    .collection("section")
+    .doc(section)
+    .get()
+    .then(docSnapshot => {
+      return docSnapshot.data();
+    });
+};
+
+export const setSectionContent = (section, data) => {
+  return db
+    .collection("section")
+    .doc(section)
+    .set(data);
+};
