@@ -270,7 +270,7 @@ const SmallHeader = ({ ...restProps }) => {
     <>
       <div
         css={{
-          paddingTop: theme.menuOffset - theme.spacing
+          paddingTop: theme.menuOffset
         }}
       />
       <header

@@ -10,20 +10,7 @@ import MarkdownEditor from "../controls/MarkdownEditor";
 
 const passAsIs = props => props;
 
-const defaultModel = [
-  {
-    prop: "imageUri",
-    label: "Adresa obrázku",
-    editor: Input,
-    getEditorProps: passAsIs,
-  },
-  {
-    prop: "textMd",
-    label: "Text",
-    editor: MarkdownEditor,
-    getEditorProps: passAsIs,
-  }
-];
+const defaultModel = [];
 
 const NumberInput = (props) => {
   return <Input type="number" {...props}/>
@@ -39,10 +26,7 @@ const ContentEditor = ({
   model = defaultModel,
   Preview = Welcome,
   data = {},
-  onChange = (data) => {
-    console.log('onChange', data);
-    return Promise.resolve("OK");
-  },
+  onChange,
   ...restProps
 }) => {
   const getEditorPropOnChange = useCallback(
@@ -58,9 +42,11 @@ const ContentEditor = ({
   return (
     <section
       css={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gridGap: theme.spacing
+        [`@media (min-width: ${theme.breakpoint.small}px)`]: {
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gridGap: theme.spacing
+        },
       }}
       {...restProps}
     >
