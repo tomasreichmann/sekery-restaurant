@@ -2,7 +2,13 @@
 import { jsx } from "@emotion/core";
 import theme from "../../config/theme";
 
-const Input = ({ type = "text", onChange, ...restProps }) => {
+const defaultValueByType = {
+  "text": "",
+  "number": 0,
+  "checkbox": false,
+}
+
+const Input = ({ type = "text", onChange, value = null, ...restProps }) => {
   const onInputChange = (event) => {
     onChange(type === "checkbox" ? event.target.checked : event.target.value)
   }
@@ -13,7 +19,6 @@ const Input = ({ type = "text", onChange, ...restProps }) => {
         border: 0,
         outline: 0,
         padding: 0,
-        width: "auto",
         lineHeight: "inherit",
         font: "inherit",
         width: "100%",
@@ -24,6 +29,7 @@ const Input = ({ type = "text", onChange, ...restProps }) => {
         }
       }}
       type={type}
+      value={value !== null ? value : defaultValueByType[type]}
       onChange={onInputChange}
       {...restProps}
     />

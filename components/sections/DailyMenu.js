@@ -91,7 +91,12 @@ const DayButton = ({ date, isActive = false, onClick }) => {
   );
 };
 
-const DailyMenu = () => {
+const DailyMenu = ({
+  sectionTitle = "Denní menu",
+  headerImageUri = "https://i.imgur.com/lERQU2O.jpg",
+  headerImageHeight = 469,
+  noDailyMenu = "Tento den pro vás bohužel nemáme připravené denní menu.",
+}) => {
   const now = new Date();
   const today = getStringDate(now);
   const thisWeek = [
@@ -145,14 +150,14 @@ const DailyMenu = () => {
   return (
     <section >
       <JumpOffset id="denni-menu" />
-      <SectionHeader backgroundUrl="https://i.imgur.com/lERQU2O.jpg" css={{
+      <SectionHeader backgroundUrl={headerImageUri} css={{
         backgroundAttachment: "scroll",
         backgroundPosition: "center center",
         backgroundSize: "auto auto",
-        height: 469 - theme.spacing * 2 ,
+        height: headerImageHeight - theme.spacing * 2 ,
         minHeight: 0,
       }}>
-        Denní menu
+        {sectionTitle}
       </SectionHeader>
       <div css={{ paddingTop: theme.spacing }}>{menuHeading}</div>
       <Loader task={getSelectedMenu}>
@@ -169,7 +174,7 @@ const DailyMenu = () => {
                 }}
               >
                 <Message>
-                  Tento den pro vás bohužel nemáme připravené denní menu.
+                  {noDailyMenu}
                 </Message>
               </div>
             );

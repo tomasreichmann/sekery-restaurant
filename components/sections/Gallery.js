@@ -2,7 +2,6 @@
 import { jsx } from "@emotion/core";
 import theme from "../../config/theme";
 import Link from "next/link";
-import Headline from "../Headline";
 import A from "../A";
 import JumpOffset from "../JumpOffset";
 import SectionHeader from "../SectionHeading";
@@ -33,7 +32,7 @@ const Thumbnail = ({ uri, children = null, ...restProps }) => {
   );
 };
 
-const Gallery = () => {
+const Gallery = ({ sectionTitle = "Galerie", headerImageUri = "https://i.imgur.com/uxGwldo.jpg", headerImageHeight = 528 }) => {
   return (
     <section css={{ marginBottom: theme.spacing * 2 }} >
       <JumpOffset id="galerie"/>
@@ -46,13 +45,13 @@ const Gallery = () => {
       >
         <Link href="/galerie">
           <A color="inherit" hoverColor="inherit" textDecoration="none">
-          <SectionHeader backgroundUrl="https://i.imgur.com/uxGwldo.jpg" css={{
+          <SectionHeader backgroundUrl={headerImageUri} css={{
             backgroundAttachment: "scroll",
             backgroundPosition: "center center",
             backgroundSize: "auto auto",
-            height: 528 - theme.spacing * 2 ,
+            height: headerImageHeight - theme.spacing * 2 ,
             minHeight: 0,
-          }}>Galerie</SectionHeader>
+          }}>{sectionTitle}</SectionHeader>
           </A>
         </Link>
       </div>

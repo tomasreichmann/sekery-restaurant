@@ -3,7 +3,25 @@ import { jsx } from "@emotion/core";
 import theme from "../../config/theme";
 import A from "../A";
 
-const Footer = () => {
+const Footer = ({
+  links = [
+    {
+      title: "Smíchovské uzeniny",
+      href: "http://smichovske-uzeniny.cz",
+      imageUri: "/static/smichovske-uzeniny.png",
+    },
+    {
+      title: "Anděl Catering",
+      href: "http://andel-catering.cz",
+      imageUri: "/static/andel-catering.png",
+    },
+    {
+      title: "Zvěřina Praha",
+      href: "http://zverina-praha.cz",
+      imageUri: "/static/zverina-praha.png",
+    }
+  ]
+}) => {
   return (
     <section>
       <div
@@ -23,19 +41,17 @@ const Footer = () => {
           }
         }}
       >
-        <A href="http://smichovske-uzeniny.cz" title="Smíchovské uzeniny">
-          <img
-            src="/static/smichovske-uzeniny.png"
-            alt=""
-            css={{ width: "100%", maxWidth: 200 }}
-          />
-        </A>
-        <A href="http://andel-catering.cz" title="Anděl Catering">
-          <img src="/static/andel-catering.png" alt="" css={{ width: "100%", maxWidth: 200 }} />
-        </A>
-        <A href="http://zverina-praha.cz" title="Zvěřina Praha">
-          <img src="/static/zverina-praha.png" alt="" css={{ width: "100%", maxWidth: 200 }} />
-        </A>
+        {links.map(({ href = "", title = "", imageUri = "" } = { href: "", title: "", imageUri: "" }) => {
+          return (
+            <A href={href} title={title} key={href}>
+              <img
+                src={imageUri}
+                alt=""
+                css={{ width: "100%", maxWidth: 200 }}
+              />
+            </A>
+          );
+        })}
       </div>
     </section>
   );

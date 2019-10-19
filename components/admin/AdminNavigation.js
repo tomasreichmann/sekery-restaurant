@@ -38,23 +38,38 @@ const AdminNavigation = ({ ...restProps }) => {
       <Link href="/admin">
         <A {...linkProps}>Administrace</A>
       </Link>
+      <Link href="/admin/hlavicka">
+        <A {...linkProps}>Hlavička</A>
+      </Link>
       <Link href="/admin/uvod">
         <A {...linkProps}>Úvod</A>
       </Link>
-      <Link href="/admin/o-nas">
-        <A {...linkProps}>O nás</A>
+      <Link href="/admin/denni-menu">
+        <A {...linkProps}>Denní menu</A>
       </Link>
       <Link href="/admin/stala-denni-nabidka">
         <A {...linkProps}>Stálá denní nabídka</A>
-      </Link>
-      <Link href="/admin/denni-menu">
-        <A {...linkProps}>Denní menu</A>
       </Link>
       <Link href="/admin/napojovy-listek">
         <A {...linkProps}>Nápojový lístek</A>
       </Link>
       <Link href="/admin/vecerni-menu">
         <A {...linkProps}>Večerní menu</A>
+      </Link>
+      <Link href="/admin/o-nas">
+        <A {...linkProps}>O nás</A>
+      </Link>
+      <Link href="/admin/galerie">
+        <A {...linkProps}>Galerie</A>
+      </Link>
+      <Link href="/admin/kontakt">
+        <A {...linkProps}>Kontakt</A>
+      </Link>
+      <Link href="/admin/prace">
+        <A {...linkProps}>Pracovní příležitosti</A>
+      </Link>
+      <Link href="/admin/paticka">
+        <A {...linkProps}>Patička</A>
       </Link>
       <div
         css={{

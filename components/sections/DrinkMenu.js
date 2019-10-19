@@ -8,23 +8,28 @@ import Loader from "../Loader";
 import { getDrinkMenu } from "../../firebase/firestore";
 import Message from "../Message";
 
-const DrinkMenu = () => {
+const DrinkMenu = ({
+  sectionTitle = "Nápojový lístek",
+  headerImageUri = "https://i.imgur.com/HwhHb5f.jpg",
+  headerImageHeight = 347,
+  noMenu = "Nemáme pro vás zatím připravený nápojový lístek.",
+}) => {
   return (
     <section css={{ marginBottom: theme.spacing * 2 }}>
       <JumpOffset id="napojovy-listek" />
-      <SectionHeader backgroundUrl="https://i.imgur.com/HwhHb5f.jpg" css={{
+      <SectionHeader backgroundUrl={headerImageUri} css={{
         backgroundAttachment: "scroll",
         backgroundPosition: "center center",
         backgroundSize: "auto auto",
-        height: 347 - theme.spacing * 2 ,
+        height: headerImageHeight - theme.spacing * 2 ,
         minHeight: 0,
       }}>
-        Nápojový lístek
+        {sectionTitle}
       </SectionHeader>
       <Loader task={getDrinkMenu}>
         {({ data: { items = []} } = { data: { items: []}}) => {
           if (items.length === 0) {
-            return <Message>Nemáme pro vás zatím připravený nápojový lístek.</Message>
+            return <Message>{noMenu}</Message>
           }
           return <Menu items={items} columnCount={1} />
         }}

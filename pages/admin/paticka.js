@@ -6,57 +6,50 @@ import SaveWrapper from "../../components/admin/SaveWrapper";
 import theme from "../../config/theme";
 import { setSectionContent, getSectionContent } from "../../firebase/firestore";
 import Headline from "../../components/Headline";
-import AboutUs from "../../components/sections/AboutUs";
+import Footer from "../../components/sections/Footer";
 
 // IMPORTANT TO UPDATE WHEN COPYING SECTION
-const sectionKey = "aboutUs";
+const sectionKey = "footer";
 const getSectionData = () => getSectionContent(sectionKey);
 const setSectionData = (data) => setSectionContent(sectionKey, data);
 
 const model = [
   {
-    prop: "sectionTitle",
-    label: "Nadpis sekce",
-    editorName: "Input",
-  },
-  {
-    prop: "sectionTitleEn",
-    label: "Nadpis sekce EN",
-    editorName: "Input",
-  },
-  {
-    prop: "headerImageUri",
-    label: "Adresa obrázku hlavičky sekce",
-    editorName: "Input",
-  },
-  {
-    prop: "headerImageHeight",
-    label: "Výška obrázku hlavičky sekce",
-    editorName: "Number",
-  },
-  {
-    prop: "imageUri",
-    label: "Adresa obrázku vedle textu",
-    editorName: "Input",
-  },
-  {
-    prop: "textMd",
-    label: "Text",
-    editorName: "Markdown",
-  },
-  {
-    prop: "textMdEn",
-    label: "Text EN",
-    editorName: "Markdown",
+    prop: "links",
+    label: "Odkazy",
+    editorName: "Array",
+    editorProps: {
+      model: {
+        editorName: "Object",
+        editorProps: {
+          model: [
+            {
+              prop: "title",
+              label: "Název",
+              editorName: "Input",
+            },
+            {
+              prop: "href",
+              label: "Odkaz",
+              editorName: "Input",
+            },
+            {
+              prop: "imageUri",
+              label: "Adresa obrázku",
+              editorName: "Input",
+            },
+          ]
+        }
+      }
+    }
   },
 ];
 
-const AdminAboutUs = () => {
-
+const AdminFooter = () => {
   return (
-    <AdminPage title="O Nás">
+    <AdminPage title="Kontakt">
       <div css={{ padding: theme.spacing }}>
-        <Headline level={1} >O nás</Headline>
+        <Headline level={1} >Patička</Headline>
         <SaveWrapper
           getData={getSectionData}
           setData={setSectionData}
@@ -67,7 +60,7 @@ const AdminAboutUs = () => {
                 model={model}
                 data={data}
                 onChange={onChange}
-                Preview={AboutUs}
+                Preview={Footer}
               />
             );
           }}
@@ -77,4 +70,4 @@ const AdminAboutUs = () => {
   );
 };
 
-export default AdminAboutUs;
+export default AdminFooter;

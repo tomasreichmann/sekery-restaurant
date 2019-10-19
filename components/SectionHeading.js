@@ -15,9 +15,8 @@ const SectionHeader = ({
         flexDirection: "column",
         justifyContent: "center",
         backgroundImage: `url(${backgroundUrl})` || "none",
-        backgroundAttachment: "fixed",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
+        backgroundPosition: "center center",
+        backgroundSize: "auto auto",
         textAlign: "center",
         padding: `${theme.spacing}px ${theme.spacing}px ${theme.spacing}px ${
           theme.spacing

@@ -1,11 +1,16 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import theme from "../../config/theme";
-import SectionHeader from "../SectionHeading";
-import A from "../A";
 import JumpOffset from "../JumpOffset";
+import Markdown from "../controls/Markdown";
 
-const Career = () => {
+const Career = ({
+  text = `Hledáme kuchaře a číšníky! Pokud máte zájem, zašlete nám prosím Váš životopis na email.
+
+  Děkujeme
+
+  [prace@sekeryrestaurant.cz](mailto:prace@sekeryrestaurant.cz)`
+}) => {
   return (
     <section
       css={{ marginBottom: theme.spacing * 2 }}
@@ -18,17 +23,7 @@ const Career = () => {
           fontSize: theme.fontSize.h3
         }}
       >
-        <p>
-          Hledáme kuchaře a číšníky! Pokud máte zájem, zašlete nám prosím Váš
-          životopis na email.
-        </p>
-        <p>
-          Děkujeme
-        </p>
-
-        <p>
-          <A href="prace@sekeryrestaurant.cz">prace@sekeryrestaurant.cz</A>
-        </p>
+        <Markdown source={text} />
       </div>
     </section>
   );

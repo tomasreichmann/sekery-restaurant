@@ -5,9 +5,9 @@ import Head from 'next/head'
 import theme from '../config/theme';
 import Header from './Header';
 
-const Page = ({title = "Restaurant Sekery", children, ...restProps}) => {
+const Page = ({title = "Restaurant Sekery", children, headerContent, ...restProps}) => {
   return (
-    <div>
+    <div {...restProps}>
       <Global
         styles={css(theme.global)}
       />
@@ -15,7 +15,7 @@ const Page = ({title = "Restaurant Sekery", children, ...restProps}) => {
         <title>{title}</title>
         <link href="https://fonts.googleapis.com/css?family=Magra:700|Merriweather:400,700&amp;display=swap&amp;subset=latin-ext" rel="stylesheet" />
       </Head>
-      <Header />
+      <Header headerContent={headerContent} />
       <main>
         {children}
       </main>

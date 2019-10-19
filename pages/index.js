@@ -16,7 +16,19 @@ import EveningMenu from "../components/sections/EveningMenu";
 import { getSectionContent } from "../firebase/firestore";
 import theme from "../config/theme";
 
-function Home({ error, welcomeContent, aboutUsContent }) {
+function Home({
+  error,
+  headerContent,
+  welcomeContent,
+  dailyMenuContent,
+  drinkMenuContent,
+  eveningMenuContent,
+  aboutUsContent,
+  galleryContent,
+  contactUsContent,
+  careerContent,
+  footerContent
+}) {
   const errorStatus = error && (
     <div css={{ padding: theme.spacing }}>
       <p>
@@ -31,41 +43,60 @@ function Home({ error, welcomeContent, aboutUsContent }) {
   );
 
   return (
-    <Page>
+    <Page headerContent={headerContent}>
       {errorStatus}
       <Welcome {...welcomeContent} />
-      <DailyMenu />
+      <DailyMenu {...dailyMenuContent} />
       <MealMenu />
-      <DrinkMenu />
-      <EveningMenu />
-      <MenuFeatures />
+      <DrinkMenu {...drinkMenuContent} />
+      <EveningMenu {...eveningMenuContent} />
+      <MenuFeatures features={eveningMenuContent.features} />
       <AboutUs {...aboutUsContent} />
-      <Gallery />
-      <ContactUs />
-      <RestaurantFeatures />
-      <Career />
-      <Footer />
+      <Gallery {...galleryContent} />
+      <ContactUs {...contactUsContent} />
+      <RestaurantFeatures
+        restaurantFeatures={contactUsContent.restaurantFeatures}
+      />
+      <Career {...careerContent} />
+      <Footer {...footerContent} />
     </Page>
   );
 }
 
-const getSectionError = (section, error = "") => Error(`Sekci "${section}" se nepodařilo načíst. Zobrazí se záložní data.\n${JSON.stringify(error, null, 2)}`)
+const getSectionError = (section, error = "") =>
+  Error(
+    `Sekci "${section}" se nepodařilo načíst. Zobrazí se záložní data.\n${JSON.stringify(
+      error,
+      null,
+      2
+    )}`
+  );
 
-const loadSection = async (section) => {
+const loadSection = async section => {
   const content = await getSectionContent(section).catch(error => {
     throw getSectionError(section, error);
   });
-    if (!content) {
-      throw getSectionError(section);
-    }
-    return { [`${section}Content`]: content };
-}
+  if (!content) {
+    throw getSectionError(section);
+  }
+  return { [`${section}Content`]: content };
+};
 
 Home.getInitialProps = async () => {
   try {
     const props = [];
+    // TODO: Make parallel
+    props.push(await loadSection("header"));
     props.push(await loadSection("welcome"));
     props.push(await loadSection("aboutUs"));
+    props.push(await loadSection("dailyMenu"));
+    props.push(await loadSection("drinkMenu"));
+    props.push(await loadSection("eveningMenu"));
+    props.push(await loadSection("gallery"));
+    props.push(await loadSection("contactUs"));
+    props.push(await loadSection("career"));
+    props.push(await loadSection("footer"));
+
     return Object.assign({}, ...props);
   } catch (error) {
     return { error };

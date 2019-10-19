@@ -6,12 +6,20 @@ import SaveWrapper from "../../components/admin/SaveWrapper";
 import theme from "../../config/theme";
 import { setSectionContent, getSectionContent } from "../../firebase/firestore";
 import Headline from "../../components/Headline";
-import AboutUs from "../../components/sections/AboutUs";
+import Gallery from "../../components/sections/Gallery";
+import Photos from "../../components/Photos";
 
 // IMPORTANT TO UPDATE WHEN COPYING SECTION
-const sectionKey = "aboutUs";
+const sectionKey = "gallery";
 const getSectionData = () => getSectionContent(sectionKey);
 const setSectionData = (data) => setSectionContent(sectionKey, data);
+
+const GalleryAndPhotos = (galleryContent = { photos: []}) => {
+  return <div>
+    <Gallery {...galleryContent} />
+    <Photos items={galleryContent.photos.map(item => { return { uri: item }})} />
+  </div>
+}
 
 const model = [
   {
@@ -35,28 +43,22 @@ const model = [
     editorName: "Number",
   },
   {
-    prop: "imageUri",
-    label: "Adresa obrázku vedle textu",
-    editorName: "Input",
-  },
-  {
-    prop: "textMd",
-    label: "Text",
-    editorName: "Markdown",
-  },
-  {
-    prop: "textMdEn",
-    label: "Text EN",
-    editorName: "Markdown",
+    prop: "photos",
+    label: "Adresy fotek",
+    editorName: "Array",
+    editorProps: {
+      model: {
+        editorName: "Input",
+      }
+    }
   },
 ];
 
-const AdminAboutUs = () => {
-
+const AdminGallery = () => {
   return (
-    <AdminPage title="O Nás">
+    <AdminPage title="Galerie">
       <div css={{ padding: theme.spacing }}>
-        <Headline level={1} >O nás</Headline>
+        <Headline level={1} >Galerie</Headline>
         <SaveWrapper
           getData={getSectionData}
           setData={setSectionData}
@@ -67,7 +69,7 @@ const AdminAboutUs = () => {
                 model={model}
                 data={data}
                 onChange={onChange}
-                Preview={AboutUs}
+                Preview={GalleryAndPhotos}
               />
             );
           }}
@@ -77,4 +79,4 @@ const AdminAboutUs = () => {
   );
 };
 
-export default AdminAboutUs;
+export default AdminGallery;

@@ -16,16 +16,14 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     setUserState({ isLoading: true, error: null, user: null });
-    console.log('onAuthStateChanged check');
     const unregisterAuthObserver = firebase
       .auth()
       .onAuthStateChanged(
         user => {
-          console.log('onAuthStateChanged success', user);
           setUserState({ isLoading: false, error: null, user })
         },
         error => {
-          console.log('onAuthStateChanged error', error);
+          console.error('onAuthStateChanged error', error);
           setUserState({ isLoading: false, error, user: null })
         },
       );

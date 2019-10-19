@@ -16,83 +16,73 @@ const linkProps = {
   textDecoration: "none"
 };
 
-const LanguageLinks = () => {
+const LanguageLinks = ({ languages }) => {
   return (
     <>
-      <A {...linkProps} href="/">
-        <img
-          src="/static/cz.svg"
-          css={{
-            height: "1em",
-            border: `1px solid ${theme.color.border}`
-          }}
-        />
-      </A>
-      &emsp;
-      <A {...linkProps} href="/en">
-        <img
-          src="/static/en.svg"
-          css={{
-            height: "1em",
-            border: `1px solid ${theme.color.border}`
-          }}
-        />
-      </A>
+      {languages.map(
+        ({ icon = "", code = "" } = { icon: "", code: "" }, languageIndex) => {
+          return (
+            <A
+              {...linkProps}
+              href={code === "cz" ? "/" : `/${code}`}
+              key={code}
+              css={{
+                marginRight:
+                  languageIndex < languages.length - 1 ? theme.spacing : 0
+              }}
+            >
+              <img
+                src={icon}
+                css={{
+                  height: "1em",
+                  border: `1px solid ${theme.color.border}`
+                }}
+              />
+            </A>
+          );
+        }
+      )}
     </>
   );
 };
 
-const SocialLinks = () => {
+const SocialLinks = ({ facebook, instagram, tripadvisor }) => {
   return (
     <>
-      <A
-        {...linkProps}
-        href="https://www.facebook.com/Sekery-Restaurant-103322994343167"
-      >
+      <A {...linkProps} href={facebook}>
         <IconFacebook css={{ height: "2em" }} />
       </A>
       &emsp;
-      <A {...linkProps} href="https://www.instagram.com/sekery_restaurant/">
+      <A {...linkProps} href={instagram}>
         <IconInstagram css={{ height: "2em" }} />
       </A>
       &emsp;
-      <A {...linkProps} href="https://www.tripadvisor.cz/">
+      <A {...linkProps} href={tripadvisor}>
         <IconTripadvisor css={{ height: "2em" }} />
       </A>
     </>
   );
 };
 
-const NavigationLinks = ({ onClick = () => {} }) => {
+const NavigationLinks = ({ navigation, onClick = () => {} }) => {
   return (
     <>
-      <A {...linkProps} href="/#denni-menu" onClick={onClick}>
-        Denní menu
-      </A>
-      &emsp;
-      <A {...linkProps} href="/#napojovy-listek" onClick={onClick}>
-        Nápojový lístek
-      </A>
-      &emsp;
-      <A {...linkProps} href="/#vecerni-menu" onClick={onClick}>
-        Večerní menu
-      </A>
-      &emsp;
-      <A {...linkProps} href="/#o-nas" onClick={onClick}>
-        O nás
-      </A>
-      &emsp;
-      <A {...linkProps} href="/#galerie" onClick={onClick}>
-        Galerie
-      </A>
-      &emsp;
-      <A {...linkProps} href="/#kontakt" onClick={onClick}>
-        Kontakt
-      </A>
-      &emsp;
-      <A {...linkProps} href="/#pracovni-prilezitosti" onClick={onClick}>
-        Práce
-      </A>
+      {navigation.map(({ text = "", href = "" } = { text: "", href: "" }) => {
+        return (
+          <A
+            key={href}
+            {...linkProps}
+            href={href}
+            onClick={onClick}
+            css={{
+              marginLeft: theme.spacing / 2,
+              marginRight: theme.spacing / 2
+            }}
+          >
+            {text}
+          </A>
+        );
+      })}
     </>
   );
 };
@@ -106,7 +96,7 @@ const fadeIn = keyframes`
   }
 `;
 
-const LargeFixedHeader = ({ ...restProps }) => {
+const LargeFixedHeader = ({ headerContent, ...restProps }) => {
   return (
     <header
       {...restProps}
@@ -143,7 +133,7 @@ const LargeFixedHeader = ({ ...restProps }) => {
           marginBottom: -theme.spacing / 2
         }}
       >
-        Sekery Restaurant
+        {headerContent.pageTitle}
       </A>
       <div
         css={{
@@ -153,7 +143,7 @@ const LargeFixedHeader = ({ ...restProps }) => {
           alignSelf: "center"
         }}
       >
-        <NavigationLinks />
+        <NavigationLinks navigation={headerContent.navigation} />
       </div>
       <div
         css={{
@@ -166,17 +156,17 @@ const LargeFixedHeader = ({ ...restProps }) => {
         }}
       >
         <div>
-          <SocialLinks />
+          <SocialLinks {...headerContent.social} />
         </div>
         <div>
-          <LanguageLinks />
+          <LanguageLinks languages={headerContent.languages} />
         </div>
       </div>
     </header>
   );
 };
 
-const LargeHeader = ({ ...restProps }) => {
+export const LargeHeader = ({ headerContent, ...restProps }) => {
   return (
     <header
       {...restProps}
@@ -203,7 +193,7 @@ const LargeHeader = ({ ...restProps }) => {
             width: 140
           }}
         >
-          <LanguageLinks />
+          <LanguageLinks languages={headerContent.languages} />
         </div>
         <A
           href="/"
@@ -217,12 +207,12 @@ const LargeHeader = ({ ...restProps }) => {
             color: "transparent"
           }}
         >
-          Sekery Restaurant
+          {headerContent.pageTitle}
         </A>
         <div
           css={{ textAlign: "right", marginLeft: theme.spacing, width: 140 }}
         >
-          <SocialLinks />
+          <SocialLinks {...headerContent.social} />
         </div>
       </div>
       <div
@@ -232,13 +222,13 @@ const LargeHeader = ({ ...restProps }) => {
           fontSize: theme.fontSize.h4
         }}
       >
-        <NavigationLinks />
+        <NavigationLinks navigation={headerContent.navigation} />
       </div>
     </header>
   );
 };
 
-const LargeHeaderController = ({ ...restProps }) => {
+const LargeHeaderController = ({ headerContent, ...restProps }) => {
   const [isFixed, setIsFixed] = useState(false);
   useScrollPosition(
     ({ currPos }) => {
@@ -258,13 +248,15 @@ const LargeHeaderController = ({ ...restProps }) => {
 
   return (
     <>
-      <LargeHeader {...restProps} />
-      {isFixed && <LargeFixedHeader {...restProps} />}
+      <LargeHeader headerContent={headerContent} {...restProps} />
+      {isFixed && (
+        <LargeFixedHeader headerContent={headerContent} {...restProps} />
+      )}
     </>
   );
 };
 
-const SmallHeader = ({ ...restProps }) => {
+const SmallHeader = ({ headerContent, ...restProps }) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   return (
     <>
@@ -322,7 +314,7 @@ const SmallHeader = ({ ...restProps }) => {
             marginBottom: -theme.spacing / 2
           }}
         >
-          Sekery Restaurant
+          {headerContent.pageTitle}
         </A>
         <div
           css={{
@@ -335,19 +327,24 @@ const SmallHeader = ({ ...restProps }) => {
           }}
         >
           <div>
-            <SocialLinks />
+            <SocialLinks {...headerContent.social} />
           </div>
           <div>
-            <LanguageLinks />
+            <LanguageLinks languages={headerContent.languages} />
           </div>
         </div>
-        {menuIsOpen && <BurgerMenu onClick={() => setMenuIsOpen(false)} />}
+        {menuIsOpen && (
+          <BurgerMenu
+            navigation={headerContent.navigation}
+            onClick={() => setMenuIsOpen(false)}
+          />
+        )}
       </header>
     </>
   );
 };
 
-const BurgerMenu = ({ onClick, ...restProps }) => {
+const BurgerMenu = ({ navigation, onClick, ...restProps }) => {
   return (
     <div
       css={{
@@ -365,12 +362,12 @@ const BurgerMenu = ({ onClick, ...restProps }) => {
       }}
       {...restProps}
     >
-      <NavigationLinks onClick={onClick} />
+      <NavigationLinks navigation={navigation} onClick={onClick} />
     </div>
   );
 };
 
-const Header = ({ ...restProps }) => {
+const Header = ({ headerContent, ...restProps }) => {
   const [size, setSize] = useState(null);
 
   return (
@@ -393,9 +390,12 @@ const Header = ({ ...restProps }) => {
           }}
         >
           {size === "large" ? (
-            <LargeHeaderController {...restProps} />
+            <LargeHeaderController
+              headerContent={headerContent}
+              {...restProps}
+            />
           ) : (
-            <SmallHeader {...restProps} />
+            <SmallHeader headerContent={headerContent} {...restProps} />
           )}
         </div>
       )}

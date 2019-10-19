@@ -8,11 +8,16 @@ import { AuthProvider } from "../../firebase/auth";
 import AdminNavigation from "./AdminNavigation";
 import AuthRequired from "./AuthRequired";
 import "easymde/dist/easymde.min.css";
+import { getSectionContent } from "../../firebase/firestore";
+import Loader from "../Loader";
+
+const loadHeader = () => getSectionContent("header");
 
 const AdminPage = ({ title = "Administrace | Restaurant Sekery", children, ...restProps }) => {
+
   return (
     <AuthProvider>
-      <div>
+      <div {...restProps}>
         <Global styles={css(theme.global)} />
         <Head>
           <title>{title}</title>
@@ -21,7 +26,11 @@ const AdminPage = ({ title = "Administrace | Restaurant Sekery", children, ...re
             rel="stylesheet"
           />
         </Head>
-        <Header />
+        <Loader task={loadHeader}>
+          {({ data } ) => {
+            return <Header headerContent={data}/>
+          }}
+        </Loader>
         <main>
           <AuthRequired>
             <AdminNavigation />

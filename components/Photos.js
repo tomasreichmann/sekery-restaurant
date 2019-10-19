@@ -18,7 +18,6 @@ const Image = ({ uri, children = null, ...restProps }) => {
 };
 
 const Photos = ({ items, heading = null, ...restProps }) => {
-  const shift = 2;
   return (
     <>
       { heading && <Headline level={2} css={{

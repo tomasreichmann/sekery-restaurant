@@ -8,33 +8,38 @@ import theme from "../../config/theme";
 import { setSectionContent, getSectionContent } from "../../firebase/firestore";
 import Headline from "../../components/Headline";
 
+// IMPORTANT TO UPDATE WHEN COPYING SECTION
 const sectionKey = "welcome";
+const getSectionData = () => getSectionContent(sectionKey);
+const setSectionData = (data) => setSectionContent(sectionKey, data);
 
-const Admin = () => {
-  const model = [
-    {
-      prop: "imageUri",
-      label: "Adresa obrázku",
-      editorName: "Input",
-    },
-    {
-      prop: "textMd",
-      label: "Text",
-      editorName: "MarkdownEditor",
-    }
-  ];
+const model = [
+  {
+    prop: "imageUri",
+    label: "Adresa obrázku",
+    editorName: "Input",
+  },
+  {
+    prop: "textMd",
+    label: "Text",
+    editorName: "Markdown",
+  },
+  {
+    prop: "textMdEn",
+    label: "Text EN",
+    editorName: "Markdown",
+  },
+];
+
+const AdminWelcome = () => {
 
   return (
     <AdminPage title="Úvod">
       <div css={{ padding: theme.spacing }}>
         <Headline level={1} >Úvod</Headline>
         <SaveWrapper
-          getData={() =>
-            getSectionContent(sectionKey)
-          }
-          setData={(data) => {
-            return setSectionContent(sectionKey, data);
-          }}
+          getData={getSectionData}
+          setData={setSectionData}
         >
           {({ data, onChange}) => {
             return (
@@ -52,4 +57,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default AdminWelcome;

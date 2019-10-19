@@ -6,57 +6,39 @@ import SaveWrapper from "../../components/admin/SaveWrapper";
 import theme from "../../config/theme";
 import { setSectionContent, getSectionContent } from "../../firebase/firestore";
 import Headline from "../../components/Headline";
-import AboutUs from "../../components/sections/AboutUs";
+import ContactUs from "../../components/sections/ContactUs";
+import RestaurantFeatures from "../../components/sections/RestaurantFeatures";
+import Career from "../../components/sections/Career";
 
 // IMPORTANT TO UPDATE WHEN COPYING SECTION
-const sectionKey = "aboutUs";
+const sectionKey = "career";
 const getSectionData = () => getSectionContent(sectionKey);
 const setSectionData = (data) => setSectionContent(sectionKey, data);
 
+const ContactUsAndRestaurantFeatures = (contactUsContent = { restaurantFeatures: [] }) => {
+  return <div>
+    <ContactUs {...contactUsContent} />
+    <RestaurantFeatures restaurantFeatures={contactUsContent.restaurantFeatures} />
+  </div>
+}
 const model = [
   {
-    prop: "sectionTitle",
-    label: "Nadpis sekce",
-    editorName: "Input",
-  },
-  {
-    prop: "sectionTitleEn",
-    label: "Nadpis sekce EN",
-    editorName: "Input",
-  },
-  {
-    prop: "headerImageUri",
-    label: "Adresa obrázku hlavičky sekce",
-    editorName: "Input",
-  },
-  {
-    prop: "headerImageHeight",
-    label: "Výška obrázku hlavičky sekce",
-    editorName: "Number",
-  },
-  {
-    prop: "imageUri",
-    label: "Adresa obrázku vedle textu",
-    editorName: "Input",
-  },
-  {
-    prop: "textMd",
+    prop: "text",
     label: "Text",
     editorName: "Markdown",
   },
   {
-    prop: "textMdEn",
+    prop: "textEn",
     label: "Text EN",
     editorName: "Markdown",
   },
 ];
 
-const AdminAboutUs = () => {
-
+const AdminCareer = () => {
   return (
-    <AdminPage title="O Nás">
+    <AdminPage title="Pracovní příležitosti">
       <div css={{ padding: theme.spacing }}>
-        <Headline level={1} >O nás</Headline>
+        <Headline level={1} >Pracovní příležitosti</Headline>
         <SaveWrapper
           getData={getSectionData}
           setData={setSectionData}
@@ -67,7 +49,7 @@ const AdminAboutUs = () => {
                 model={model}
                 data={data}
                 onChange={onChange}
-                Preview={AboutUs}
+                Preview={Career}
               />
             );
           }}
@@ -77,4 +59,4 @@ const AdminAboutUs = () => {
   );
 };
 
-export default AdminAboutUs;
+export default AdminCareer;
