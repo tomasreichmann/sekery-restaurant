@@ -86,7 +86,7 @@ const HeaderAdmin = () => {
           editorProps: {
             model: [
               {
-                prop: "icon",
+                prop: "iconUri",
                 editorName: "Input",
                 label: "Adresa ikony",
                 editorProps: {

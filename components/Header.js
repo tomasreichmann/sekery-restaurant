@@ -16,11 +16,63 @@ const linkProps = {
   textDecoration: "none"
 };
 
-const LanguageLinks = ({ languages }) => {
+const fallbackHeaderContent = {
+  pageTitle: "Sekery Restaurant",
+  social: {
+    facebook: "https://www.facebook.com/Sekery-Restaurant-103322994343167",
+    instagram: "https://www.instagram.com/sekery_restaurant/",
+    tripadvisor: "https://www.tripadvisor.cz/"
+  },
+  navigation: [
+    {
+      text: "Denní menu",
+      href: "/#denni-menu"
+    },
+    {
+      text: "Nápojový lístek",
+      href: "/#napojovy-listek"
+    },
+    {
+      text: "Večerní menu",
+      href: "/#vecerni-menu"
+    },
+    {
+      text: "O nás",
+      href: "/#o-nas"
+    },
+    {
+      text: "Galerie",
+      href: "/galerie"
+    },
+    {
+      text: "Kontakt",
+      href: "/#kontakt"
+    },
+    {
+      text: "Práce",
+      href: "/#pracovni-prilezitosti"
+    }
+  ],
+  languages: [
+    {
+      iconUri: "/static/cz.svg",
+      code: "cz"
+    },
+    {
+      iconUri: "/static/en.svg",
+      code: "en"
+    }
+  ]
+};
+
+const LanguageLinks = ({ languages = fallbackHeaderContent.languages }) => {
   return (
     <>
       {languages.map(
-        ({ icon = "", code = "" } = { icon: "", code: "" }, languageIndex) => {
+        (
+          { iconUri = "", code = "" } = { iconUri: "", code: "" },
+          languageIndex
+        ) => {
           return (
             <A
               {...linkProps}
@@ -32,7 +84,7 @@ const LanguageLinks = ({ languages }) => {
               }}
             >
               <img
-                src={icon}
+                src={iconUri}
                 css={{
                   height: "1em",
                   border: `1px solid ${theme.color.border}`
@@ -46,7 +98,9 @@ const LanguageLinks = ({ languages }) => {
   );
 };
 
-const SocialLinks = ({ facebook, instagram, tripadvisor }) => {
+const SocialLinks = (
+  { facebook, instagram, tripadvisor } = fallbackHeaderContent.social
+) => {
   return (
     <>
       <A {...linkProps} href={facebook}>
@@ -64,7 +118,10 @@ const SocialLinks = ({ facebook, instagram, tripadvisor }) => {
   );
 };
 
-const NavigationLinks = ({ navigation, onClick = () => {} }) => {
+const NavigationLinks = ({
+  navigation = fallbackHeaderContent.navigation,
+  onClick = () => {}
+}) => {
   return (
     <>
       {navigation.map(({ text = "", href = "" } = { text: "", href: "" }) => {
@@ -96,7 +153,10 @@ const fadeIn = keyframes`
   }
 `;
 
-const LargeFixedHeader = ({ headerContent, ...restProps }) => {
+const LargeFixedHeader = ({
+  headerContent = fallbackHeaderContent,
+  ...restProps
+}) => {
   return (
     <header
       {...restProps}
@@ -166,7 +226,10 @@ const LargeFixedHeader = ({ headerContent, ...restProps }) => {
   );
 };
 
-export const LargeHeader = ({ headerContent, ...restProps }) => {
+export const LargeHeader = ({
+  headerContent = fallbackHeaderContent,
+  ...restProps
+}) => {
   return (
     <header
       {...restProps}
@@ -228,7 +291,10 @@ export const LargeHeader = ({ headerContent, ...restProps }) => {
   );
 };
 
-const LargeHeaderController = ({ headerContent, ...restProps }) => {
+const LargeHeaderController = ({
+  headerContent = fallbackHeaderContent,
+  ...restProps
+}) => {
   const [isFixed, setIsFixed] = useState(false);
   useScrollPosition(
     ({ currPos }) => {
@@ -256,7 +322,10 @@ const LargeHeaderController = ({ headerContent, ...restProps }) => {
   );
 };
 
-const SmallHeader = ({ headerContent, ...restProps }) => {
+const SmallHeader = ({
+  headerContent = fallbackHeaderContent,
+  ...restProps
+}) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   return (
     <>
@@ -344,7 +413,11 @@ const SmallHeader = ({ headerContent, ...restProps }) => {
   );
 };
 
-const BurgerMenu = ({ navigation, onClick, ...restProps }) => {
+const BurgerMenu = ({
+  navigation = fallbackHeaderContent.navigation,
+  onClick,
+  ...restProps
+}) => {
   return (
     <div
       css={{
@@ -367,7 +440,7 @@ const BurgerMenu = ({ navigation, onClick, ...restProps }) => {
   );
 };
 
-const Header = ({ headerContent, ...restProps }) => {
+const Header = ({ headerContent = fallbackHeaderContent, ...restProps }) => {
   const [size, setSize] = useState(null);
 
   return (
